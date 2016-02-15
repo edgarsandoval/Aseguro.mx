@@ -1,0 +1,37 @@
+#background-contact
+{
+	text-align: center;
+	background-color: #F6F6F6;
+	padding: 1em 0 1em 0;
+}
+
+textarea
+{
+	width: 100%;
+}
+
+
+#contact-name,
+#contact-mail
+{
+	padding-left: 1em;
+	font-weight: bold;
+}
+
+textarea.gidole
+{
+	padding: 1em;
+	font-weight: bold;
+}
+
+
+input#btn-enviar 
+{
+    float: right;
+    background-color: #0D0F42;
+    border: 1px solid #0D0F42;
+    width: 30%;
+    padding: .3em 0 .3em 0;
+    font-size: 1.3em;
+    color: #FFFFFF;
+}

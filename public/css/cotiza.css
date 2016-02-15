@@ -1,0 +1,39 @@
+#quote-background
+{
+	text-align: center;
+	padding-top: 8vw;
+	padding-bottom: 10vw;
+}
+
+#quote-background p.gidole
+{
+	color: #FFFFFF;
+}
+
+#form
+{
+	background-color: rgba(255, 255, 255, .3);
+	border-radius: 25px;
+	text-align: left;
+	padding: 2em;
+}
+
+.quote-text
+{
+	font-size: 1.5em;
+}
+
+.radio label
+{
+	color: #FFFFFF;
+}
+
+input#btn-cotizar 
+{
+    background-color: #0D0F42;
+    border-radius: 6px;
+    border: 1px solid #0D0F42;
+    width: 40%;
+    font-size: 1.3em;
+    color: #FFFFFF;
+}

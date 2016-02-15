@@ -1,0 +1,134 @@
+[13-Feb-2016 01:50:19 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:24 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:25 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:25 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:25 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:26 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:29 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:30 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:30 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:30 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:31 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:31 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:31 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:32 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:32 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:32 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:32 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:32 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[13-Feb-2016 01:50:37 UTC] PHP Parse error:  syntax error, unexpected '}', expecting identifier (T_STRING) in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 110
+[14-Feb-2016 18:26:26 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 18:26:26 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 18:27:10 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 18:27:10 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 18:29:16 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 18:29:16 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:38:01 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:38:01 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:07 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:07 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:30 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:30 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:38 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:38 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:46 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 19:49:46 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 20:07:30 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 20:07:30 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 20:07:44 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 20:07:44 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 20:07:50 UTC] PHP Warning:  Uncaught exception 'ErrorException' with message 'require(/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php): failed to open stream: No such file or directory' in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php:3
+Stack trace:
+#0 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): Illuminate\Exception\Handler->handleError(2, 'require(/home/a...', '/home/aseguro/p...', 3, Array)
+#1 /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php(3): require()
+#2 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(412): include('/home/aseguro/p...')
+#3 /home/aseguro/public_html/aseguro/vendor/composer/ClassLoader.php(301): Composer\Autoload\includeFile('/home/aseguro/p...')
+#4 [internal function]: Composer\Autoload\ClassLoader->loadClass('QuoteController')
+#5 [internal function]: spl_autoload_call('QuoteController')
+#6 /home/aseguro/public_html/aseguro/vendor/laravel/framework/src/Illuminate/Container/Container.php(504): Reflectio in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3
+[14-Feb-2016 20:07:50 UTC] PHP Fatal error:  main(): Failed opening required '/home/aseguro/public_html/aseguro/app/controllers/Openpay/Openpay.php' (include_path='/home/aseguro/public_html/aseguro/vendor/phpseclib/phpseclib/phpseclib:.:/usr/lib/php:/usr/local/lib/php') in /home/aseguro/public_html/aseguro/app/controllers/QuoteController.php on line 3

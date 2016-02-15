@@ -1,0 +1,168 @@
+@font-face {
+	font-family: 'Jenna Sue';
+	src: url(../fonts/JennaSue.ttf);
+}
+
+@font-face {
+	font-family: 'Gidole';
+	src: url(../fonts/Gidole-Regular.ttf);
+}
+
+.jenna-sue
+{
+	font-family: 'Jenna Sue' !important;
+}
+
+.gidole
+{
+	font-family: 'Gidole' !important;
+}
+
+img[alt="logo"]
+{
+	width: 48%;
+    float: right;
+    margin-right: 1em;
+}
+
+#header .row
+{
+	background-color: #FFFFFF;
+}
+
+ul.nav.navbar-nav.gidole > li
+{
+    width: 20% !important;
+    text-align: center;
+    background-color: #38434B;
+    border: 1px solid #231F20;
+    border-right: none !important;
+}
+.container-fluid,
+.navbar-collapse
+{
+	padding: 0 !important;
+}
+
+nav.navbar.navbar-default
+{
+    margin: 0;
+}
+
+ul.nav.navbar-nav.gidole
+{
+	width: 100%;
+	border-top: 20px solid #EC4424;
+}
+
+ul.nav.navbar-nav.gidole > li
+{
+	width: 20%;
+	text-align: center;
+	background-color: #38434B;
+	border: 1px solid #231F20;
+	border-right: none !important;
+}
+
+ul.nav.navbar-nav.gidole > li > a
+{
+	color: #FFFFFF;
+}
+
+nav.navbar.navbar-default,
+.collapse.navbar-collapse 
+{
+    border: none !important;
+}
+
+.menu-fixed
+{
+	position: fixed;
+	z-index: 1000;
+	top: 0;
+	/* left:0; */
+	width: 100%;
+	/* box-shadow: 0px 4px 3px rgba(0,0,0,.5); */
+}
+
+select
+{
+	width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(../images/select.png) 100% / 23px no-repeat #FFF;
+    cursor: pointer;
+    margin-bottom: 1em;
+    padding-right: 2em;
+    padding-left: .3em;
+}
+
+input[type="text"],
+input[type="email"]
+{
+    width: 100%;
+    margin-bottom: 1em;
+    padding-left: .3em;
+
+}
+
+::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black; 
+ }
+
+:-ms-input-placeholder {  
+   color: black;  
+}
+
+#footer
+{
+	background-color: #0D0F42;
+	color: #FFFFFF !important;
+}
+
+#footer div.row
+{
+	padding: 1em; 
+}
+
+#footer div.row div.col-md-4
+{
+	text-align: center;
+}
+
+ul#footer-menu li
+{
+	display: inline;
+}
+
+ul#footer-menu li a,
+ul#footer-menu li a:hover
+{
+	color: #FFFFFF;
+	text-decoration: none;
+	margin-right: 3vw;
+}
+
+#footer div.row div.col-md-4 a,
+#footer div.row div.col-md-4 a:hover
+{
+	text-decoration: none;
+	color: #FFFFFF;
+}
+
+
+
+/*TEMPORALMENTE SIN SOLUCIÓN :(*/
+/*.row
+{
+	margin: 0;
+}*/

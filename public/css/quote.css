@@ -1,0 +1,88 @@
+
+
+/*ul.nav.navbar-nav.gidole > li:last-child
+{
+	width: 25% !important;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	color: #FFFFFF;
+	font-size: 2em;
+}
+*/
+
+
+
+div#background-cotizar-home
+{
+	padding: 0em 17vw;
+}
+
+.title-cotizar
+{
+    font-size: 1.75em;
+    margin: 1em;
+    color: #0D0F42;
+    text-align: center;
+}
+
+p.title-cotizar > span
+{
+	color: #EC4424;
+}
+
+div#tabla-cotizar
+{
+    /*margin: 0em 2em;*/
+}
+
+div#tabla-cotizar div
+{
+    background-color: #EC4424;
+    color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1.2vw;
+} 
+
+div.fila-cotizar div
+{
+    padding: 1em;
+}
+
+div.fila-cotizar div span
+{
+    margin: auto;
+}
+
+p.costo-anual
+{
+    color: #0D0F42;
+    font-size: 3em;
+    margin: auto;
+}
+
+.row
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
+
+input[type="submit"],
+input[type="submit"]:hover
+{
+    background-color: #141942;
+    color: #FFFFFF;
+    margin-top: 1em;
+   /* position: absolute;
+    top: 42%;
+    right: 13%;*/
+}
+
+div.radio
+{
+    padding: 0 !important;
+    padding-left: 2em !important;
+    margin-bottom: 0;
+}

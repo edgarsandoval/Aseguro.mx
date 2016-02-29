@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 	<title>Aseguro :: Webpage consulta todo</title>
 
 	<link rel="shortcut icon" href="{{ asset('images/favicon.png') }}">
@@ -11,6 +12,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="http://css-plus.com/examples/2013/10/jquery-image-slider/fancybox/jquery.fancybox-1.3.1.css">
 	<link rel="stylesheet" href="{{ asset('css/common.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 	
 	{{ HTML::style( asset('css/home.css')) }}
 	{{ HTML::style( asset('css/cotiza.css')) }}
@@ -25,6 +27,10 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="http://css-plus.com/examples/2013/10/jquery-image-slider/fancybox/jquery.fancybox-1.3.1.js"></script>
 	<script src="{{ asset('js/common.js') }}"></script>
+
+	<!-- Esperamos que con esto deje de tronar -->
+	{{ HTML::script( asset('js/jquery.beforeafter-1.4.js')) }}
+	<!-- -->
 
 
 	{{ HTML::script( asset('js/home.js')) }}
@@ -45,6 +51,7 @@
 			</div>
 			<div class="col-md-8">
 				<nav class="navbar navbar-default">
+					<div class="nav-control"></div>
 					<div class="container-fluid">
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse">
@@ -84,10 +91,13 @@
 	</div>
 
 	<div id="footer">
-		<div class="row">
+		<div class="row" style="display: flex;">
 			<div class="col-md-2" style="padding-top: 2em; padding-left: 2em;">
 				<img src="{{ asset('images/aseguro.png') }}" alt="aseguro">
-				<p class="gidole" style="margin-top: 2em;">
+
+				<p class="gidole" style="bottom: 2em; position: absolute;"><a href="aviso-privacidad" target="_blank">AVISO DE PRIVACIDAD</a></p>
+
+				<p class="gidole" style="margin-top: 2em; display: none;">
 					Av. Patria #5846<br>
 					Zapopan, Jalisco, México<br>
 					C.P. 45070<br>
@@ -102,9 +112,9 @@
 						</div>
 						<div class="col-md-6" style="text-align: center;">
 							<span style="font-size:1.4vw;">
-								<a href="#"><i class="fa fa-facebook"></i></a> &nbsp;
-								<a href="#"><i class="fa fa-twitter"></i></a> &nbsp;
-								<a href="#"><i class="fa fa-instagram"></i></a> &nbsp;
+								<a href="http://www.facebook.com/aseguromx/" target="_blank"><i class="fa fa-facebook"></i></a> &nbsp;
+								<a href="http://www.twitter.com/aseguromx/" target="_blank"><i class="fa fa-twitter"></i></a> &nbsp;
+								<a href="http://www.instagram.com/aseguromx/" target="_blank"><i class="fa fa-instagram"></i></a> &nbsp;
 							</span>
 						</div>
 					</div>

@@ -66,8 +66,10 @@ class HomeController extends BaseController {
 			array_push($estados,$estado);
 		}
 
+		unset($_GET);
+
 		//return view('index', ['tipos' => $tipos]);
-		return View::make('index', array('tipos' => $tipos, 'estados' => $estados));
+		return View::make('index', array('tipos' => $tipos, 'estados' => $estados, 'mensaje' => (Input::get('message') ? : null)));
 		//return View::make('hello');
 	}
 
@@ -92,7 +94,7 @@ class HomeController extends BaseController {
 
 		});
 
-		$mensaje = 'sucess';
+		$mensaje = 'Su correo ha sido enviado con éxito, revise su bandeja. :)';
 		
 		return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
 	}
@@ -311,6 +313,7 @@ class HomeController extends BaseController {
 
 		$resultadoAutos = \simplexml_load_string($resultadoAutos->CompaniasResult);
 
+
 		//Invocación al web service
 		$WS = new SoapClient ($WebService);
 
@@ -337,8 +340,15 @@ class HomeController extends BaseController {
 		//return json_encode($resultado);
 	}
 
+	public function getAviso()
+	{
 
+		$filename = 'AVISO DE PRIVACIDAD INTEGRAL [431580].pdf';
+		$path = storage_path() . DIRECTORY_SEPARATOR . 'docs' . DIRECTORY_SEPARATOR . $filename;
 
-
-
+		return Response::make(file_get_contents($path), 200, [
+    		'Content-Type' => 'application/pdf',
+    		'Content-Disposition' => 'inline; '.$filename
+		]);
+	}
 }

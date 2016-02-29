@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="http://css-plus.com/examples/2013/10/jquery-image-slider/fancybox/jquery.fancybox-1.3.1.css">
 	<link rel="stylesheet" href="{{ asset('css/common.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 	
 	{{ HTML::style( asset('css/quote.css')) }}
 	{{ HTML::style( asset('css/pago-tarjeta.css')) }}
@@ -73,7 +74,10 @@
 		<div class="row">
 			<div class="col-md-2" style="padding-top: 2em; padding-left: 2em;">
 				<img src="{{ asset('images/aseguro.png') }}" alt="aseguro">
-				<p class="gidole" style="margin-top: 2em;">
+
+				<p class="gidole" style="bottom: 2em; position: absolute;"><a href="aviso-privacidad" target="_blank">AVISO DE PRIVACIDAD</a></p>
+				
+				<p class="gidole" style="margin-top: 2em; display: none;">
 					Av. Patria #5846<br>
 					Zapopan, Jalisco, México<br>
 					C.P. 45070<br>
@@ -88,9 +92,9 @@
 						</div>
 						<div class="col-md-6" style="text-align: center;">
 							<span style="font-size:1.4vw;">
-								<a href="#"><i class="fa fa-facebook"></i></a> &nbsp;
-								<a href="#"><i class="fa fa-twitter"></i></a> &nbsp;
-								<a href="#"><i class="fa fa-instagram"></i></a> &nbsp;
+								<a href="http://www.facebook.com/aseguromx/" target="_blank"><i class="fa fa-facebook"></i></a> &nbsp;
+								<a href="http://www.twitter.com/aseguromx/" target="_blank"><i class="fa fa-twitter"></i></a> &nbsp;
+								<a href="http://www.instagram.com/aseguromx/" target="_blank"><i class="fa fa-instagram"></i></a> &nbsp;
 							</span>
 						</div>
 					</div>

@@ -1,19 +1,18 @@
 $(document).ready(function()
 {
-	if($('#mensaje').val() == "sucess")
+	if($('#background-home').height() == 40)
+		location.reload(true);
+
+	if(buscarMensaje())
 	{
-		alert("Mensaje enviado con exito. :)");
-		// window.location.reload();
+		var mensaje = $("#mensaje").val();
+
+		$('#common-modal .modal-body > p').html(mensaje);
+		$('#common-modal').modal();
 	}
-	else if($('#mensaje').val())
-		alert($('#mensaje').val())
-	window.location.href = '#openModal';
-	
-	// $('#close').click(function(event)
-	// {
-	// 	event.preventDefault();
-	// 	hideModal();
-	// });
+	else
+		$("#home-modal").modal();
+
 
 	$('#container').beforeAfter(
 	{
@@ -23,3 +22,8 @@ $(document).ready(function()
 		showFullLinks : false
 	});
 });
+
+function buscarMensaje()
+{
+	return $("#mensaje").val() != "null";
+}

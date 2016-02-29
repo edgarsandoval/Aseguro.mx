@@ -1,0 +1,82 @@
+/* RESPONSIVE CELULARES */
+@media all and (max-width: 480px) {
+	#background-home
+	{
+    	display: none !important;
+	}
+
+	div#promise-background 
+	{
+    	background-size: cover;
+	}
+
+	#auto-parallax 
+	{
+		max-width: 100%;
+	}
+
+	.gallery__controls.clearfix
+	{
+		display: none !important;
+	}
+
+	.gallery-wrap
+	{
+    	overflow: inherit !important;
+    	width: inherit !important;
+	}
+
+	.gallery__item 
+	{
+		float: none !important;
+		text-align: center;
+	}
+
+	.gallery.clearfix
+	{
+		width: inherit !important;
+	}
+
+	.gallery__img
+	{
+    	 display: inline !important;
+    	 margin-bottom: 2em;
+	}
+
+	input#btn-enviar
+	{
+    	float: none  !important;
+	}
+
+	#footer .row
+	{
+		display: inline !important;
+	}
+
+	#footer div.row div
+	{
+    	text-align: center !important;
+	}
+
+	#footer div.row div.col-md-2 p
+	{
+		position: relative;
+	}
+
+
+	#footer div.row div.col-md-2 p 
+	{
+    	position: relative !important;
+    	bottom: initial !important;
+    	margin-top: 1em;
+	}
+
+	#footer div.row div.col-md-6,
+	#footer div.row div.col-md-6 span
+	{
+    	padding-top: 0 !important;
+    	font-size: 1.1em !important;
+	}
+
+	
+}

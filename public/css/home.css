@@ -35,54 +35,22 @@
     animation-name: bounce; 
 }
 
-
-.modalDialog 
-{
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 99999;
-    opacity:0;
-    -webkit-transition: opacity 400ms ease-in;
-    -moz-transition: opacity 400ms ease-in;
-    transition: opacity 400ms ease-in;
-    pointer-events: none;
-}
-
-.modalDialog:target 
-{
-    opacity:1;
-    pointer-events: auto;
-}
-
-.modalDialog > div 
-{
-	text-align: center;
-    width: 400px;
-    position: relative;
-    margin: 5% auto;
-    padding: 5px 20px 13px 20px;
-    border-radius: 10px;
-    background: #fff;
-    background-color: transparent; 
-}
-
 .close 
 {
 	font-size: 3em;
 	opacity: 1;
-    color: #FFFFFF;
-    text-align: center;
-    text-decoration: none;
-    font-weight: normal !important;
+  color: #FFFFFF;
+  text-align: center;
+  text-decoration: none;
+  font-weight: normal !important;
+  float: none;
+  text-shadow: none;
 }
 
 .close:hover
 {
 	color: #FFFFFF;
+  opacity: 1;
 }
 
 img[alt="carrochocado"],
@@ -98,4 +66,15 @@ img[alt="home-logo"]
 	left: 2vw;
 	position: absolute;
 	z-index: 15;
+}
+
+
+button.btn-close,
+button.btn-close:hover
+{
+  background-color: #0D0F42;
+  border-radius: 6px;
+  border: 1px solid #0D0F42;
+  width: 30%;
+  color: #FFFFFF;
 }

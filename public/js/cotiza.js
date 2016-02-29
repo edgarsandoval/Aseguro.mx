@@ -4,7 +4,7 @@ $(document).ready(function()
     {
         event.preventDefault();
         cotizar();
-        $('#frm-cotizar').submit();
+        $('#btn-real').click();
 
     });
 });

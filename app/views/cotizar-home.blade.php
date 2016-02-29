@@ -51,7 +51,7 @@
 								@elseif($k == 2)
 									<input type="radio" name="opcion" value="{{$k}}">
 						    		Pago Tarjeta
-								@else($k == 3)
+								@else
 									<input type="radio" name="opcion" value="{{$k}}">
 						    		Pago en Tiendas
 								@endif

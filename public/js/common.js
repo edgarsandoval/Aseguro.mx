@@ -1,5 +1,8 @@
 $(document).ready(function()
 {
+	if($(window).width() < 900)
+			$('nav.navbar').addClass('mobile-menu');
+		
 	var altura = $('#home').height() / 2;
 	$('html, body').animate({'scrollTop' : 0});
 
@@ -39,6 +42,14 @@ $(document).ready(function()
 	{
 		event.preventDefault();
 		$('html, body').animate({'scrollTop' : $('#contacto').position().top});
+	});
+
+	$(window).resize(function()
+	{
+		if($(window).width() < 900)
+			$('nav.navbar').addClass('mobile-menu');
+		else
+			$('nav.navbar').removeClass('mobile-menu');
 	});
 
 });

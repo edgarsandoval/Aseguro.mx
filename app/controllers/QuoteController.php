@@ -1,7 +1,5 @@
 <?php
 
-//require(dirname(__FILE__) . '/Openpay/Openpay.php');
-
 class QuoteController extends BaseController {
 
 	public function procesarPago()

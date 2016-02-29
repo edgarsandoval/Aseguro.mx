@@ -36,9 +36,9 @@
 						<div class="row">
 							<input type="hidden" id="user-age" name="user-age" value>
 							<div class="col-md-6">
-								<input type="text" id="user-name" name="user-name" placeholder="Nombre">
-								<input type="text" id="user-lastname" name="user-lastname" placeholder="Apellido Paterno">
-								<input type="text" id="user-phone" name="user-phone" placeholder="Teléfono">
+								<input type="text" id="user-name" name="user-name" placeholder="Nombre" required>
+								<input type="text" id="user-lastname" name="user-lastname" placeholder="Apellido Paterno" required>
+								<input type="text" id="user-phone" name="user-phone" placeholder="Teléfono (opcional)">
 
 							</div>
 							<div class="col-md-6">
@@ -125,6 +125,7 @@
 					</div>
 					<div class="col-md-12 gidole" style="text-align: center;padding-top:2.5em;">
 						<input type="button" id="btn-cotizar" value="COTIZAR">
+						<input type="submit" id="btn-real">
 					</div>
 				</div>
 			</div>

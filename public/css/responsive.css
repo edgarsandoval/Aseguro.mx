@@ -1,0 +1,148 @@
+/* RESPONSIVE CELULARES */
+@media all and (max-width: 480px) {
+	#background-home
+	{
+    	display: none !important;
+	}
+
+	div#promise-background 
+	{
+    	background-size: cover;
+	}
+
+	#auto-parallax 
+	{
+		max-width: 100%;
+	}
+
+	.gallery__controls.clearfix
+	{
+		display: none !important;
+	}
+
+	.gallery-wrap
+	{
+    	overflow: inherit !important;
+    	width: inherit !important;
+	}
+
+	.gallery__item 
+	{
+		float: none !important;
+		text-align: center;
+	}
+
+	.gallery.clearfix
+	{
+		width: inherit !important;
+	}
+
+	.gallery__img
+	{
+    	 display: inline !important;
+    	 margin-bottom: 2em;
+	}
+
+	input#btn-enviar
+	{
+    	float: none  !important;
+	}
+}
+
+@media only screen and (max-width: 900px) {
+
+	nav.navbar.navbar-default.mobile-menu
+	{
+    	height: 125px;
+	}
+
+	.navbar-nav
+	{
+    	float: left;
+    	margin: 0;
+	}
+
+	.nav-control 
+	{
+    	padding-top: 2em;
+    	padding-right: 4em;
+    	padding-bottom: 50px;
+	}
+
+	#background-home
+	{
+    	display: none !important;
+	}
+
+	img[alt="logo"]
+	{
+		width: 140px !important;
+	    float: none !important;
+	    margin-right: 0 !important;
+	    position: absolute;
+	    z-index: 100;
+	    left: 4em;
+    	top: 10px;
+	}
+
+	#banner-background p 
+	{
+		font-size: 1.5em !important;
+	}
+
+	.gallery__controls-prev
+	{
+    	cursor: pointer;
+    	float: left;
+    	transform: translate(12em, -6em) !important;
+    	-webkit-transform: translate(12em, -6em) !important;
+	}
+
+	.gallery__controls-next 
+	{
+    	cursor: pointer;
+    	float: right;
+    	transform: translate(-12em, -6em) !important;
+    	-webkit-transform: translate(-12em, -6em) !important;
+	}
+
+	#footer .row
+	{
+		display: inline !important;
+	}
+
+	#footer div.row div
+	{
+    	text-align: center !important;
+	}
+
+	#footer div.row div.col-md-2 p
+	{
+		position: relative;
+	}
+
+
+	#footer div.row div.col-md-2 p 
+	{
+    	position: relative !important;
+    	bottom: initial !important;
+    	margin-top: 1em;
+	}
+
+	#footer div.row div.col-md-6,
+	#footer div.row div.col-md-6 span
+	{
+    	padding-top: 0 !important;
+    	font-size: 1.1em !important;
+	}
+
+	.row
+	{
+		display: block !important;
+	}
+
+	div#tabla-cotizar
+	{
+    	display: none !important;
+	}
+}

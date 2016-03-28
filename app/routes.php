@@ -42,6 +42,8 @@ Route::get('pago-tienda', 'QuoteController@cargoTienda');
 
 Route::get('error/{dump}', 'QuoteController@tratarError');
 
+Route::get('aviso-privacidad', 'HomeController@getAviso');
+
 
 
 //  Ejemplo como regresar vista

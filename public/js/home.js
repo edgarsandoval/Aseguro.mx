@@ -1,19 +1,23 @@
 $(document).ready(function()
 {
-	if($('#mensaje').val() == "sucess")
+	if($('#background-home').height() == 40)
 	{
-		alert("Mensaje enviado con exito. :)");
-		// window.location.reload();
+		$('html').remove(); // Para hacer creer que todavía está cargando... pero no es verdad. :)
+		location.reload(true);
 	}
-	else if($('#mensaje').val())
-		alert($('#mensaje').val())
-	window.location.href = '#openModal';
-	
-	// $('#close').click(function(event)
-	// {
-	// 	event.preventDefault();
-	// 	hideModal();
-	// });
+	else
+		console.log($('#background-home').height())
+
+	if(buscarMensaje())
+	{
+		var mensaje = $("#mensaje").val();
+
+		$('#common-modal .modal-body > p').html(mensaje);
+		$('#common-modal').modal();
+	}
+	else
+		$("#home-modal").modal();
+
 
 	$('#container').beforeAfter(
 	{
@@ -23,3 +27,8 @@ $(document).ready(function()
 		showFullLinks : false
 	});
 });
+
+function buscarMensaje()
+{
+	return $("#mensaje").val() != "null";
+}

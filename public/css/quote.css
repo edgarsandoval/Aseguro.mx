@@ -70,7 +70,8 @@ p.costo-anual
 }
 
 input[type="submit"],
-input[type="submit"]:hover
+input[type="submit"]:hover,
+button#btn-filtrar
 {
     background-color: #141942;
     color: #FFFFFF;
@@ -85,4 +86,9 @@ div.radio
     padding: 0 !important;
     padding-left: 2em !important;
     margin-bottom: 0;
+}
+
+div#filtros
+{
+    padding: 1em;
 }

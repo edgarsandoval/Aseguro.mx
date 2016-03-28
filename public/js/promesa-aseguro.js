@@ -1,7 +1,6 @@
 $(document).ready(function()
 {
 	var lastScrollTop = 0;
-	$('#scroll-car').css('height', $('#auto-parallax').height());
 	$(window).scroll(function(event)
 	{
 		if($(this).scrollTop() + $(window).height() < $('#promesa-aseguro').position().top)

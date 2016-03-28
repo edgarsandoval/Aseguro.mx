@@ -37,3 +37,8 @@ input#btn-cotizar
     font-size: 1.3em;
     color: #FFFFFF;
 }
+
+input#btn-real
+{
+	display: none;
+}

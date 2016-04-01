@@ -4,10 +4,60 @@ $(document).ready(function()
     {
         event.preventDefault();
         cotizar();
+
         $('#btn-real').click();
+
+        if(!valido())
+            return;
+
+        $('.modal-body').css('text-align', 'center');
+        $('#common-modal .modal-body').append($('<img>').attr('src', 'js/ajax_spinner.gif'));
+
+        $('#common-modal .modal-body > p').css({
+            'font-size' : '1.5em',
+            'font-weight' :  'bold'
+        });
+        $('#common-modal .modal-body > p').html('Tu cotización está siendo procesada<br> Un momento, por favor.');
+
+        $('.modal-footer button').css({
+            'display' : 'none'
+        });
+
+        $('#common-modal').modal();
 
     });
 });
+
+function valido()
+{
+    var ret = true;
+    $('form :text').each(function()
+    {
+        if($.trim($(this).val()) == "" &&
+           $.trim($(this).attr('name')) != 'user-phone' && 
+           $.trim($(this).attr('name')) != 'contact-name' &&
+           $.trim($(this).attr('name')) != 'contact-mail')
+        {
+            console.log($(this));
+            ret = false;
+            return;
+        } 
+    });
+
+    if(!ret)
+        return false;
+
+    $('#frm-cotizar select').each(function()
+    {
+        if($.trim($(this).val()) == "" )
+        {
+            ret = false;
+            return;
+        } 
+    });
+
+    return ret;
+}
 
 function loadModels(){
     $("#model").empty().append("<option>-Cargando-</option>");

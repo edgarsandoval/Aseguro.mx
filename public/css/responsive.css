@@ -47,6 +47,64 @@
 	{
     	float: none  !important;
 	}
+}
+
+@media only screen and (max-width: 900px) {
+
+	nav.navbar.navbar-default.mobile-menu
+	{
+    	height: 125px;
+	}
+
+	.navbar-nav
+	{
+    	float: left;
+    	margin: 0;
+	}
+
+	.nav-control 
+	{
+    	padding-top: 2em;
+    	padding-right: 4em;
+    	padding-bottom: 50px;
+	}
+
+	#background-home
+	{
+    	display: none !important;
+	}
+
+	img[alt="logo"]
+	{
+		width: 140px !important;
+	    float: none !important;
+	    margin-right: 0 !important;
+	    position: absolute;
+	    z-index: 100;
+	    left: 4em;
+    	top: 10px;
+	}
+
+	#banner-background p 
+	{
+		font-size: 1.5em !important;
+	}
+
+	.gallery__controls-prev
+	{
+    	cursor: pointer;
+    	float: left;
+    	transform: translate(12em, -6em) !important;
+    	-webkit-transform: translate(12em, -6em) !important;
+	}
+
+	.gallery__controls-next 
+	{
+    	cursor: pointer;
+    	float: right;
+    	transform: translate(-12em, -6em) !important;
+    	-webkit-transform: translate(-12em, -6em) !important;
+	}
 
 	#footer .row
 	{
@@ -78,5 +136,13 @@
     	font-size: 1.1em !important;
 	}
 
-	
+	.row
+	{
+		display: block !important;
+	}
+
+	div#tabla-cotizar
+	{
+    	display: none !important;
+	}
 }

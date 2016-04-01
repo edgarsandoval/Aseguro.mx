@@ -45,6 +45,10 @@ Route::get('error/{dump}', 'QuoteController@tratarError');
 Route::get('aviso-privacidad', 'HomeController@getAviso');
 
 
+// Intento de API REST.
+Route::post('webhook', 'UriController@webHook');
+
+
 
 //  Ejemplo como regresar vista
 // Route::get('/', function()

@@ -31,15 +31,35 @@
 	{{ HTML::script( asset('js/cotizar-home.js')) }}
 	{{ HTML::script( asset('js/pago-tarjeta.js')) }}
 
+	<!--Start of Zopim Live Chat Script-->
+	<script type="text/javascript">
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="//v2.zopim.com/?3josboGJ1qGXWp663zVRIc8LpQwdmFrg";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+	</script>
+	<!--End of Zopim Live Chat Script-->
+
 </head>
 <body>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T4NFSB"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-T4NFSB');</script>
+	<!-- End Google Tag Manager -->
 	<div id="header">
 		<div class="row">
 			<div class="col-md-2">
 				<img src="{{ asset('images/home/home-logo.png') }}" alt="logo">
 			</div>
-			<div class="col-md-9">
+			<div class="col-md-8">
 				<nav class="navbar navbar-default">
+					<div class="nav-control"></div>
 					<div class="container-fluid">
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse">
@@ -48,13 +68,12 @@
 						    <li>{{ HTML::link('/#promesa-aseguro', 'Promesa Aseguro') }}</li>
 						    <li>{{ HTML::link('/#cotiza', 'COTIZA') }}</li>
 						    <li>{{ HTML::link('/#aseguros','Aseguradoras') }}</li>
-						    <li>{{ HTML::link('/#contacto', 'Contacto') }}</li>
-						    {{-- <li><i class="fa fa-phone"></i>&nbsp;<span class="gidole" style="font-size: 0.85em;vertical-align: text-top;">01 33 3456 7891</span></li> --}}
+						    <li>{{ HTML::link('/#contacto', 'Contacto') }}</li>		    
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
 				</nav>
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-2"></div>
 		</div>
 	</div>
 
@@ -113,8 +132,27 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
-				<p class="gidole" style="bottom: 1em; position: absolute;">Hecho por: RANDOM</p>
+				<p class="gidole" style="bottom: 1em; position: absolute;">Hecho por: <a href="http://www.sitiorandom.com" target="_blank">RANDOM</a></p>
 			</div>
+		</div>
+	</div>
+
+	<!-- Modal Common -->
+	<div class="modal fade" id="common-modal" role="dialog">
+		<div class="modal-dialog">
+		  <!-- Modal content-->
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <h4 class="modal-title gidole"><b>Mensaje del servidor (Aseguro.mx)</b></h4>
+		    </div>
+		    <div class="modal-body">
+		    	<p class="gidole" style="font-size: 1.2em; padding-left: 1em;"></p>
+		    </div>
+		    <div class="modal-footer">
+				<button type="button" class="btn btn-default btn-close gidole" data-dismiss="modal">Cerrar</button>
+		    </div>
+		  </div>
+		  
 		</div>
 	</div>
 </body>

@@ -42,7 +42,7 @@
 
 							</div>
 							<div class="col-md-6">
-								<input type="email" id="user-email" name="user-email"  placeholder="E-mail">
+								<input type="email" id="user-email" name="user-email"  placeholder="E-mail" required>
 								<p class="gidole">Sexo:</p>
 								<div class="row" style="margin-top: -1.5em;">
 									<div class="col-md-6">

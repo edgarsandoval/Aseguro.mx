@@ -41,8 +41,16 @@ class QuoteController extends BaseController {
 		    'order_id' => 'oid-' . Input::get('id'),
 		    'customer' => $cliente
 			);
-
-		$charge = $openpay->charges->create($chargeData);
+		try 
+		{
+			$charge = $openpay->charges->create($chargeData);
+		}
+		catch(Exception $e)
+		{
+			$mensaje = "Este pago ya se había procesado, genera una nueva cotización";
+			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+		}
+		
 
 		return View::make('pago-bancario', array('charge' => $charge, 'email' => Input::get('email')));
 	}

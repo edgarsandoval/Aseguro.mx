@@ -1,7 +1,12 @@
 $(document).ready(function()
 {
 	if($('#background-home').height() == 40)
+	{
+		$('html').remove(); // Para hacer creer que todavía está cargando... pero no es verdad. :)
 		location.reload(true);
+	}
+	else
+		console.log($('#background-home').height())
 
 	if(buscarMensaje())
 	{

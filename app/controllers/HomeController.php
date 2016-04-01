@@ -1,4 +1,4 @@
-<?php
+	<?php
 
 class HomeController extends BaseController {
 
@@ -17,6 +17,76 @@ class HomeController extends BaseController {
 
 	public function showWelcome()
 	{
+
+		// Pruebas :) 
+
+		$url = 'http://localhost:8888/aseguro.mx/public/webhook';
+		$object = '{
+		    "type" : "charge.succeeded",
+		    "event_date" : "2013-11-22T15:09:38-06:00",
+		    "transaction" : {
+		        "amount" : 2000.0,
+		        "authorization" : "801585",
+		        "method" : "card",
+		        "operation_type" : "in",
+		        "transaction_type" : "charge",
+		        "card" : {
+		            "type" : "debit",
+		            "brand" : "mastercard",
+		            "address" : {
+		               "line1" : "Calle #1 Interior #2",
+		               "line2" : null,
+		               "line3" : null,
+		               "state" : "Queretaro",
+		               "city" : "Queretaro",
+		               "postal_code" : "76040",
+		               "country_code" : "MX"
+		            },
+		            "card_number" : "1881",
+		            "holder_name" : "Card Holder",
+		            "expiration_month" : "10",
+		            "expiration_year" : "14",
+		            "allows_charges" : true,
+		            "allows_payouts" : true,
+		            "creation_date" : "2013-11-22T15:09:32-06:00",
+		            "bank_name" : "BBVA BANCOMER",
+		            "bank_code" : "012"
+		        },
+		        "status" : "completed",
+		        "id" : "tlxcm4vprtz74qoenuay",
+		        "creation_date" : "2013-11-22T15:09:33-06:00",
+		        "description" : "Description",
+		        "error_message" : null,
+		        "order_id" : "oid_14235"
+		    }
+		}';
+		$fields = array(
+			'object' => $object,
+		);
+
+		$fields_string = "";
+
+		//url-ify the data for the POST
+		foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
+		rtrim($fields_string, '&');
+
+		//open connection
+		$ch = curl_init();
+
+		//set the url, number of POST vars, POST data
+		curl_setopt($ch,CURLOPT_URL, $url);
+		curl_setopt($ch,CURLOPT_POST, count($fields));
+		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
+
+		//execute post
+		$result = curl_exec($ch);
+
+		//close connection
+		curl_close($ch);
+		die();
+
+		// Fin de pruebas :) 
+
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
 
 
@@ -83,21 +153,30 @@ class HomeController extends BaseController {
 			'msg' => Input::get('contact-message')
 		);
 
-		$fromEmail = 'contacto@aseguro.mx';
-		$fromName = 'Administrador';
+		$toEmail = 'contacto@aseguro.mx';
 
-		Mail::send('emails.contacto', $data, function($message) use ($fromName , $fromEmail)
+		try
 		{
-			$message->to($fromEmail, $fromName);
-			$message->from($fromEmail, $fromName);
-			$message->subject('Nuevo email de contacto');
+			Mail::send('emails.contacto', $data, function($message) use ($toEmail)
+			{
+				$message->from('no-reply@aseguro.mx', 'Formulario de Contacto');
+				$message->to($toEmail, $name = null);
+				$message->subject('Nuevo email de contacto');
+			});
 
-		});
+			$mensaje = 'Su correo ha sido enviado con éxito, espere su respuesta. :)';
+			
+			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+		}
+		catch (Exception $e)
+		{
+			$mensaje = 'Hubo un error en el servidor, intentelo más tarde';
 
-		$mensaje = 'Su correo ha sido enviado con éxito, revise su bandeja. :)';
-		
-		return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			
+		}
 	}
+
 
 	public function loadModels()
 	{
@@ -325,17 +404,48 @@ class HomeController extends BaseController {
 
 		$request = array ( 'Token' => $accesos , 'Request' => $xml);
 
+		try
+		{
+			$resultado = $WS->Cotiza($request);
+		}
+		catch (Exception $e)
+		{
+			$mensaje = "Hubo un error en el servidor, por favor intenta de nuevo.";
+			
+			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			
+		}
 
-		$resultado = $WS->Cotiza($request);
+		$companiasInfo = array(
+			'1' => array('Telefono' => "01 800 288 6700", 'Pagina' => "http://www.qualitas.com.mx/"),
+			'3' => array('Telefono' => "01 800 322 2462", 'Pagina' => "http://www.seguroautosmapfre.com.mx/"),
+			'4' => array('Telefono' => "01 800 400 9000", 'Pagina' => "https://www.gnp.com.mx/"),
+			'5' => array('Telefono' => "01 800 712 2828", 'Pagina' => "http://www.abaseguros.com/Paginas/default.aspx"),
+			'6' => array('Telefono' => "01 800 900 1292". "https://axa.mx/home"),
+			'8' => array('Telefono' => "01 800 500 1500", 'Pagina' => "http://www.segurosbanorte.com.mx/"),
+			'10' => array('Telefono' => "01 800 849 3917", 'Pagina' => "http://www.segurosatlas.com.mx/"),
+			'11' => array('Telefono' => "01 800 723 4763", 'Pagina' => "https://www.afirme.com/"),
+			'12' => array('Telefono' => "01 800 000 0434", 'Pagina' => "https://www.hdi.com.mx/"),
+			'13' => array('Telefono' => "+52(55) 5326-8600", 'Pagina' => "http://www.segurosinteracciones.mx/"),
+			'14' => array('Telefono' => "01 800 008 3693", 'Pagina' => "https://www.rsaseguros.com.mx/" ),
+			'15' => array('Telefono' => "01 800 001 1300", 'Pagina' => "https://www.aig.com.mx/"),
+			'16' => array('Telefono' => "01 818 048 0500", 'Pagina' => "https://www.primeroseguros.com/"),
+			'17' => array('Telefono' => "01 800 004 1900", 'Pagina' => "https://www.zurich.com.mx"),
+			'18' => array('Telefono' => "01 800 835 3262", 'Pagina' => "http://www.anaseguros.com.mx/"),
+			'20' => array('Telefono' => "01 800 480 3100", 'Pagina' => "http://www.elpotosi.com.mx/"),
+			'19' => array('Telefono' => "01 800 226 2668", 'Pagina' => "http://www.multiva.com.mx/"),
+			'105' => array('Telefono' => "01 800 712 2828", 'Pagina' => "http://www.abaseguros.com/Paginas/default.aspx"),
+			'106' => array('Telefono' => "01 800 900 1292", 'Pagina' => "https://axa.mx/home")
+
+		);
 
 		$resultado = \simplexml_load_string($resultado->CotizaResult);
-
 
         $paquete = array('2' => 'Amplia', '4' => 'Limitada', '5' => 'RC', '3' => 'Limitada Plus', '1' => 'Super Amplia');
 
         $cliente = array('nombre' => Input::get('user-name'), 'apellido' => Input::get('user-lastname'), 'telefono' => Input::get('user-phone'), 'email' => Input::get('user-email'));
 
-		return View::make('quote', array('resultado' => $resultado, 'nombre' => Input::get('user-name'), 'marca' => Input::get('marca'), 'submarca' => Input::get('sub-marca'), 'modelo' => Input::get('model'), 'companias' => $resultadoAutos->Companias, 'paquete' => $paquete, 'cliente' => $cliente));
+		return View::make('quote', array('resultado' => $resultado, 'nombre' => Input::get('user-name'), 'marca' => Input::get('marca'), 'submarca' => Input::get('sub-marca'), 'modelo' => Input::get('model'), 'companias' => $resultadoAutos->Companias, 'companiasInfo' => $companiasInfo, 'paquete' => $paquete, 'cliente' => $cliente));
 
 		//return json_encode($resultado);
 	}

@@ -31,7 +31,6 @@
 	</div>
 </div>
 
-
 <!-- Modal Common -->
 <div class="modal fade" id="common-modal" role="dialog">
 	<div class="modal-dialog">

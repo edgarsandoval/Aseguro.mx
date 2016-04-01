@@ -38,8 +38,27 @@
 	{{ HTML::script( asset('js/promesa-aseguro.js')) }}
 	{{ HTML::script( asset('js/aseguros.js')) }}
 
+	<!--Start of Zopim Live Chat Script-->
+	<script type="text/javascript">
+	window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+	d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+	_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+	$.src="//v2.zopim.com/?3josboGJ1qGXWp663zVRIc8LpQwdmFrg";z.t=+new Date;$.
+	type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+	</script>
+	<!--End of Zopim Live Chat Script-->
+
 </head>
 <body>
+	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T4NFSB"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-T4NFSB');</script>
+	<!-- End Google Tag Manager -->
 	<div id="home">
 		@yield('home')
 	</div>
@@ -56,11 +75,11 @@
 					<!-- Collect the nav links, forms, and other content for toggling -->
 						<div class="collapse navbar-collapse">
 						  <ul class="nav navbar-nav gidole">
-						    <li><a href="#" id="menu_home">Home</a></li>
-						    <li><a href="#" id="menu_promesa-aseguro">Promesa Aseguro</a></li>
-						    <li><a href="#" id="menu_cotiza">COTIZA</a></li>
-						    <li><a href="#" id="menu_aseguros">Aseguradoras</a></li>
-						    <li><a href="#" id="menu_contacto">Contacto</a></li>
+						    <li><a href="#home">Home</a></li>
+						    <li><a href="#promesa-aseguro">Promesa Aseguro</a></li>
+						    <li><a href="#cotiza">COTIZA</a></li>
+						    <li><a href="#aseguros">Aseguradoras</a></li>
+						    <li><a href="#contacto">Contacto</a></li>
 						    
 						</div><!-- /.navbar-collapse -->
 					</div><!-- /.container-fluid -->
@@ -133,7 +152,7 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-2">
-				<p class="gidole" style="bottom: 1em; position: absolute;">Hecho por: RANDOM</p>
+				<p class="gidole" style="bottom: 1em; position: absolute;">Hecho por: <a href="http://www.sitiorandom.com" target="_blank">RANDOM</a></p>
 			</div>
 		</div>
 	</div>

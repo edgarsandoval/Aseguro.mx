@@ -8,8 +8,18 @@ class UriController extends BaseController {
 		$json = substr($json, 7);
 		$json = substr($json, 0, -1);
 		$action = json_decode($json);
-		dd($action);
+		echo "d";
 
-		dd($action);
+		die();
+		switch ($action->type)
+		{
+			case 'charge.succeeded':
+				
+				break;
+			
+			default:
+				# code...
+				break;
+		}
 	}
 }

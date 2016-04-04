@@ -44,10 +44,8 @@ Route::get('error/{dump}', 'QuoteController@tratarError');
 
 Route::get('aviso-privacidad', 'HomeController@getAviso');
 
-
 // Intento de API REST.
 Route::post('webhook', 'UriController@webHook');
-
 
 
 //  Ejemplo como regresar vista
@@ -55,5 +53,3 @@ Route::post('webhook', 'UriController@webHook');
 // {
 // 	return View::make('hello');
 // });
-
-//5204165041513890

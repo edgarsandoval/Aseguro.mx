@@ -3,6 +3,11 @@
 	padding-top: 4em;
 }
 
+img.gallery__img
+{
+    max-height: 82px !important;
+}
+
 .gallery-wrap
 {
 	margin: 0 auto;

@@ -48,7 +48,8 @@ class QuoteController extends BaseController {
 		catch(Exception $e)
 		{
 			$mensaje = "Este pago ya se había procesado, genera una nueva cotización";
-			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			
+			return Redirect::to('/')->with('message', $mensaje);
 		}
 		
 
@@ -84,13 +85,14 @@ class QuoteController extends BaseController {
 		catch(Exception $e)
 		{
 			$mensaje = "Hubo un error con la tarjeta, revísala o intenta más tarde";
-			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			
+			return Redirect::to('/')->with('message', $mensaje);
 		}
 
 
 		$mensaje = 'Cargo ejecutado con exito, revise su bandeja';
-
-		return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+		
+		rreturn Redirect::to('/')->with('message', $mensaje);
 	}
 
 

@@ -62,7 +62,7 @@
 										</div>
 									</div>
 								</div>
-								<input type="text" id="user-phone" name="user-phone" placeholder="Celular (opcional)">
+								<input type="text" id="user-phone" name="user-cellphone" placeholder="Celular (opcional)">
 								<br>
 								<br>
 							</div>
@@ -122,6 +122,47 @@
 										</select>
 									</div>
 								</div>
+					</div>
+
+					<div class="col-md-12">
+						<p class="gidole quote-text">.Forma de pago</p>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="radio">
+									<label>
+										<input type="radio" name="payment-method" value="4" checked>
+										Mensual
+									</label>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="radio">
+									<label>
+										<input type="radio" name="payment-method" value="3">
+										Trimestral
+									</label>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="radio">
+									<label>
+										<input type="radio" name="payment-method" value="2">
+										Semestral
+									</label>
+								</div>
+							</div>
+
+							<div class="col-md-3">
+								<div class="radio">
+									<label>
+										<input type="radio" name="payment-method" value="1">
+										Anual
+									</label>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="col-md-12 gidole" style="text-align: center;padding-top:2.5em;">
 						<input type="button" id="btn-cotizar" value="COTIZAR">

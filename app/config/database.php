@@ -56,7 +56,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
 			'database'  => 'aseguro_local',
-			'username'  => 'aseguro_local',
+			'username'  => 'aseguro',
 			'password'  => 'IXF8[2[#&Lk=',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

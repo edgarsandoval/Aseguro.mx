@@ -69,8 +69,7 @@ p.costo-anual
     display:         flex;
 }
 
-input[type="submit"],
-input[type="submit"]:hover,
+
 button#btn-filtrar
 {
     background-color: #141942;
@@ -79,6 +78,21 @@ button#btn-filtrar
    /* position: absolute;
     top: 42%;
     right: 13%;*/
+}
+
+.btn-cotizar
+{
+    background-color: #141942;
+    color: #FFFFFF;
+    margin: 0 !important;
+}
+
+.btn-cotizar:hover,
+.btn-cotizar:active,
+.btn-cotizar:focus
+{
+   background-color: #1D203A !important;
+   color: #FFFFFF !important;
 }
 
 div.radio

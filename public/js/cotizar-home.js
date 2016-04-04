@@ -98,6 +98,8 @@ function procesarFiltro()
 
 /**
 NUEVA FUNCIÓN, YA PONE LOS NÚMEROS, por hacerlo rápido y no usar AJAX. :c
+
+Consultas en O(n) papá. :V
 **/ 
 
 function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nuevas filas, funciona. ;)
@@ -134,14 +136,27 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 				}))).appendTo(resultado);
 		}
 
-		var resultadoInformacion = $('<div>').attr('class', 'col-md-3').attr('style', 'background-color: #F9F9F9;');
-		
-		resultadoInformacion.append($('<p>').append($('<b>').html('Paquete : ')).append(paquete[parseInt(cotizacionFiltrada.Detalles.Detalle[i].Paquete)]));
-		resultadoInformacion.append($('<p>').append($('<b>').html('Prima Neta :')).append(' $' + cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaNeta));
-		resultadoInformacion.append($('<p>').append($('<b>').html('Gastos Expedicion :')).append(' $ ' + cotizacionFiltrada.Detalles.Detalle[i].Montos.GastosExpedicion));
-		resultadoInformacion.append($('<p>').append($('<b>').html('Recargos :')).append(' $' + cotizacionFiltrada.Detalles.Detalle[i].Montos.Recargos));
-		resultadoInformacion.append($('<p>').append($('<b>').html('Descuento :')).append(' $' + cotizacionFiltrada.Detalles.Detalle[i].Montos.Descuento));
-		resultadoInformacion.append($('<p>').append($('<b>').html('IVA :')).append(' $' + cotizacionFiltrada.Detalles.Detalle[i].Montos.IVA));
+		var resultadoInformacion = $('<div>').attr('class', 'col-md-4').attr('style', 'background-color: #F9F9F9;');
+
+		var masInfo = $('<div>').attr('class', 'row');
+
+		$('<div>', {
+			'class' : 'col-md-6' 
+		})
+		.append($('<p>').append($('<b>').html('Paquete : ')).append(paquete[parseInt(cotizacionFiltrada.Detalles.Detalle[i].Paquete)]))
+		.append($('<p>').append($('<b>').html('Prima Neta :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaNeta, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('Gastos Expedicion :')).append(' $ ' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.GastosExpedicion, 2, '.', ',')))
+		.appendTo(masInfo);
+
+		$('<div>', {
+			'class' : 'col-md-6' 
+		})
+		.append($('<p>').append($('<b>').html('Recargos :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Recargos, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('Descuento :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Descuento, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('IVA :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.IVA, 2, '.', ',')))
+		.appendTo(masInfo);
+
+		resultadoInformacion.append(masInfo);
 
 		resultadoInformacion.appendTo(resultado);
 
@@ -149,7 +164,7 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 
 		resultadoPrecio.append($('<p>').attr('class', 'costo-anual').html('$' + parseFloat(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal))).appendTo(resultado);
 
-		resultadoContratar = $('<div>').attr('class', 'col-md-3').attr('style', 'background-color: #F9F9F9; text-align: center;');
+		resultadoContratar = $('<div>').attr('class', 'col-md-2').attr('style', 'background-color: #F9F9F9; text-align: center;');
 
 			FormularioContratar = $('<form>').attr('action', 'pagar').attr('method', 'POST').attr('id', 'frm-' + cotizacionFiltrada.Detalles.Detalle[i].id);
 			
@@ -238,6 +253,19 @@ function opcionRadio(k)
 		return $('<label>').append($('<input>').attr('type', 'radio').attr('name', 'opcion').val(k)).append('Pago en Tiendas');
 }
 
+
+function number_format(n, c, d, t)
+{
+	var n = n, 
+	    c = isNaN(c = Math.abs(c)) ? 2 : c, 
+	    d = d == undefined ? "." : d, 
+	    t = t == undefined ? "," : t, 
+	    s = n < 0 ? "-" : "", 
+	    i = parseInt(n = Math.abs(+n || 0).toFixed(c)) + "", 
+	    j = (j = i.length) > 3 ? j % 3 : 0;
+
+   return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
+ };
 
 // for(var k = 1; k <= 3; k++)
 // {

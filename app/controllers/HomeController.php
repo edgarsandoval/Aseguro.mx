@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 
 		// Pruebas :) 
 
-		$url = 'http://localhost:8888/aseguro.mx/public/webhook';
+		/*$url = 'http://localhost:8888/aseguro.mx/public/webhook';
 		$object = '{
 		    "type" : "charge.succeeded",
 		    "event_date" : "2013-11-22T15:09:38-06:00",
@@ -85,10 +85,14 @@ class HomeController extends BaseController {
 		curl_close($ch);
 		die();
 
-		// Fin de pruebas :) 
+		// Fin de pruebas :) */
+
+		//dd(DB::table('prueba')->get());
+
+		$mensaje = Session::get('message', null);
+
 
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
-
 
 		//Invocación al web service
 		$WS = new SoapClient ($WebService);
@@ -136,11 +140,7 @@ class HomeController extends BaseController {
 			array_push($estados,$estado);
 		}
 
-		unset($_GET);
-
-		//return view('index', ['tipos' => $tipos]);
-		return View::make('index', array('tipos' => $tipos, 'estados' => $estados, 'mensaje' => (Input::get('message') ? : null)));
-		//return View::make('hello');
+		return View::make('index', array('tipos' => $tipos, 'estados' => $estados, 'mensaje' => $mensaje));
 	}
 
 	public function contacto()
@@ -165,20 +165,18 @@ class HomeController extends BaseController {
 			});
 
 			$mensaje = 'Su correo ha sido enviado con éxito, espere su respuesta. :)';
-			
-			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			return Redirect::to('/')->with('message', $mensaje);
 		}
 		catch (Exception $e)
 		{
 			$mensaje = 'Hubo un error en el servidor, intentelo más tarde';
-
-			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
+			return Redirect::to('/')->with('message', $mensaje);
 			
 		}
 	}
 
 
-	public function loadModels()
+	public function getModels()
 	{
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
 
@@ -203,14 +201,14 @@ class HomeController extends BaseController {
 
 		//dd($resultado);
 
-		foreach($resultado->ModeloEncontrado->ModeloAnio as $modelo) {
+		foreach($resultado->ModeloEncontrado->ModeloAnio as $modelo){
 			array_push($modelos,$modelo);
 		}
 
 		return json_encode($modelos);
 	}
 
-	public function loadMarcas()
+	public function getMarcas()
 	{
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
 
@@ -242,7 +240,7 @@ class HomeController extends BaseController {
 		return json_encode($marcas);
 	}
 
-	public function loadSubMarcas()
+	public function getSubMarcas()
 	{
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
 
@@ -274,7 +272,7 @@ class HomeController extends BaseController {
 		return json_encode($submarcas);
 	}
 
-	public function loadDescription()
+	public function getDescription()
 	{
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
 
@@ -307,7 +305,7 @@ class HomeController extends BaseController {
 	}
 
 
-	public function loadMunicipios()
+	public function getMunicipios()
 	{
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Zonificacion.svc?wsdl";
 
@@ -340,7 +338,7 @@ class HomeController extends BaseController {
 		return json_encode($municipios);
 	}
 
-	public function loadCP()
+	public function getCP()
 	{
 		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Zonificacion.svc?wsdl";
 
@@ -374,23 +372,29 @@ class HomeController extends BaseController {
 		return json_encode($cps);
 	}
 
-	public function cotizar()
+	public function getCompanias()
 	{
-		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
 
 		$WebServiceAutos = "http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Catalogos.svc?wsdl";
 
 		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
 
-		// Catalogo de autosde Autos
+		$WS = new SoapClient($WebServiceAutos);
 
-		$WSA = new SoapClient($WebServiceAutos);
+		$request = array( 'Token' => $accesos);
 
-		$requestAutos = array( 'Token' => $accesos);
+		$companias = $WS->Companias($request);
 
-		$resultadoAutos = $WSA->Companias($requestAutos);
+		$companias = \simplexml_load_string($companias->CompaniasResult);
 
-		$resultadoAutos = \simplexml_load_string($resultadoAutos->CompaniasResult);
+		return $companias->Companias;
+	}
+
+	public function cotizar()
+	{
+		/*$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
+
+		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
 
 
 		//Invocación al web service
@@ -399,29 +403,52 @@ class HomeController extends BaseController {
 		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
 
 
-		$xml = "<Request><DatosObligatorios><Vehiculo><Tipo>".Input::get('vehicle-type')."</Tipo><Modelo>".Input::get('model')."</Modelo><ClaveInterna>".Input::get('description')."</ClaveInterna></Vehiculo><Zonificacion><CPCirculacion>".Input::get('cp')."</CPCirculacion><CPFacturacion>".Input::get('cp')."</CPFacturacion></Zonificacion><Conductor><Genero>".Input::get('user-gender')."</Genero><Edad>".Input::get('user-age')."</Edad></Conductor></DatosObligatorios></Request>";
+		$xml = "<Request>
+					<DatosObligatorios>
+						<Vehiculo>
+							<Tipo>" . Input::get('vehicle-type') . "</Tipo>
+							<Modelo>" . Input::get('model') . "</Modelo>
+							<ClaveInterna>" . Input::get('description') . "</ClaveInterna>
+						</Vehiculo>
+						<Zonificacion>
+							<CPCirculacion>" . Input::get('cp') . "</CPCirculacion>
+							<CPFacturacion>" . Input::get('cp') . "</CPFacturacion>
+						</Zonificacion>
+						<Conductor>
+							<Genero>" . Input::get('user-gender') . "</Genero>
+							<Edad>" . Input::get('user-age') . "</Edad>
+						</Conductor>
+					</DatosObligatorios>
+					<DatosOpcionales>
+						<FormaPago>" . Input::get('payment-method') ."</FormaPago>
+					</DatosOpcionales>
+				</Request>";
 
 
 		$request = array ( 'Token' => $accesos , 'Request' => $xml);
 
 		try
 		{
-			$resultado = $WS->Cotiza($request);
+			$cotizacion = $WS->Cotiza($request);
+			$cotizacion = \simplexml_load_string($cotizacion->CotizaResult);
 		}
 		catch (Exception $e)
 		{
 			$mensaje = "Hubo un error en el servidor, por favor intenta de nuevo.";
+			return Redirect::to('/')->with('message', $mensaje);
 			
-			return Redirect::action('HomeController@showWelcome', array('message' => $mensaje));
-			
-		}
+		}*/
+
+		$cotizacion = json_decode('{"Cotizacion_Id":"1277","FechaCotizacion":"04\/04\/2016","HoraCotizacion":"12:33:18 p.m.","Vigencia":{"Inicial":"04\/04\/2016","Final":"04\/04\/2017"},"FormaPago":"4","Detalles":{"Detalle":[{"id":"16806","Paquete":"4","Compania":"105","Montos":{"PrimaNeta":"7128.94","GastosExpedicion":"600","Recargos":"598.12","Descuento":"0","IVA":"1332.33","PrimaTotal":"9659.39"}},{"id":"16807","Paquete":"2","Compania":"105","Montos":{"PrimaNeta":"20039.73","GastosExpedicion":"600","Recargos":"1681.33","Descuento":"0","IVA":"3571.37","PrimaTotal":"25892.43"}},{"id":"16808","Paquete":"2","Compania":"106","Montos":{"PrimaNeta":"35300.51","GastosExpedicion":"430","Recargos":"3177.05","Descuento":"0","IVA":"6225.21","PrimaTotal":"45132.77"}},{"id":"16809","Paquete":"4","Compania":"106","Montos":{"PrimaNeta":"16190.14","GastosExpedicion":"430","Recargos":"1457.11","Descuento":"0","IVA":"2892.36","PrimaTotal":"20969.61"}},{"id":"16810","Paquete":"4","Compania":"4","Montos":{"PrimaNeta":"5897.14","GastosExpedicion":"450","Recargos":"589.71","Descuento":"0","IVA":"1109.9","PrimaTotal":"8046.75"}},{"id":"16811","Paquete":"2","Compania":"4","Montos":{"PrimaNeta":"16579.03","GastosExpedicion":"450","Recargos":"1657.9","Descuento":"0","IVA":"2989.91","PrimaTotal":"21676.84"}},{"id":"16812","Paquete":"4","Compania":"12","Montos":{"PrimaNeta":"17382.38","GastosExpedicion":"460","Recargos":"1460.12","Descuento":"0","IVA":"3088.4","PrimaTotal":"22390.9"}},{"id":"16813","Paquete":"2","Compania":"12","Montos":{"PrimaNeta":"28342.35","GastosExpedicion":"460","Recargos":"1672.87","Descuento":"-8427.19","IVA":"3527.69","PrimaTotal":"25575.73"}}]}}');
+
+		$companias = $this->getCompanias();
 
 		$companiasInfo = array(
 			'1' => array('Telefono' => "01 800 288 6700", 'Pagina' => "http://www.qualitas.com.mx/"),
 			'3' => array('Telefono' => "01 800 322 2462", 'Pagina' => "http://www.seguroautosmapfre.com.mx/"),
 			'4' => array('Telefono' => "01 800 400 9000", 'Pagina' => "https://www.gnp.com.mx/"),
 			'5' => array('Telefono' => "01 800 712 2828", 'Pagina' => "http://www.abaseguros.com/Paginas/default.aspx"),
-			'6' => array('Telefono' => "01 800 900 1292". "https://axa.mx/home"),
+			'6' => array('Telefono' => "01 800 900 1292", 'Pagina' => "https://axa.mx/home"),
 			'8' => array('Telefono' => "01 800 500 1500", 'Pagina' => "http://www.segurosbanorte.com.mx/"),
 			'10' => array('Telefono' => "01 800 849 3917", 'Pagina' => "http://www.segurosatlas.com.mx/"),
 			'11' => array('Telefono' => "01 800 723 4763", 'Pagina' => "https://www.afirme.com/"),
@@ -439,15 +466,29 @@ class HomeController extends BaseController {
 
 		);
 
-		$resultado = \simplexml_load_string($resultado->CotizaResult);
 
         $paquete = array('2' => 'Amplia', '4' => 'Limitada', '5' => 'RC', '3' => 'Limitada Plus', '1' => 'Super Amplia');
 
-        $cliente = array('nombre' => Input::get('user-name'), 'apellido' => Input::get('user-lastname'), 'telefono' => Input::get('user-phone'), 'email' => Input::get('user-email'));
+        $cliente = array(
+        	'nombre' => Input::get('user-name'),
+        	'apellido' => Input::get('user-lastname'),
+        	'telefono' => Input::get('user-phone'),
+        	'celular' => Input::get('user-cellphone'),
+        	'email' => Input::get('user-email')
+        	);
 
-		return View::make('quote', array('resultado' => $resultado, 'nombre' => Input::get('user-name'), 'marca' => Input::get('marca'), 'submarca' => Input::get('sub-marca'), 'modelo' => Input::get('model'), 'companias' => $resultadoAutos->Companias, 'companiasInfo' => $companiasInfo, 'paquete' => $paquete, 'cliente' => $cliente));
+       	setlocale(LC_ALL, 'es_MX.UTF-8');
 
-		//return json_encode($resultado);
+		return View::make('quote', array(
+				'cotizacion' => $cotizacion,
+				'cliente' => $cliente,
+				'marca' => Input::get('marca'),
+				'submarca' => Input::get('sub-marca'),
+				'modelo' => Input::get('model'),
+				'companias' => $companias,
+				'companiasInfo' => $companiasInfo,
+				'paquete' => $paquete
+			));
 	}
 
 	public function getAviso()

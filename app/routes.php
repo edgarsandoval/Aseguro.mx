@@ -12,21 +12,19 @@
 */
 Route::get('/', 'HomeController@showWelcome');
 
-Route::get('types', 'SoapController@GetRelacionTipoVehiculo');
+Route::post('models', 'HomeController@getModels');
 
-Route::post('models', 'HomeController@loadModels');
+Route::post('marcas', 'HomeController@getMarcas');
 
-Route::post('marcas', 'HomeController@loadMarcas');
+Route::post('submarcas', 'HomeController@getSubMarcas');
 
-Route::post('submarcas', 'HomeController@loadSubMarcas');
+Route::post('descripcion', 'HomeController@getDescription');
 
-Route::post('descripcion', 'HomeController@loadDescription');
+Route::post('estados', 'HomeController@getEstados');
 
-Route::post('estados', 'HomeController@loadEstados');
+Route::post('municipios', 'HomeController@getMunicipios');
 
-Route::post('municipios', 'HomeController@loadMunicipios');
-
-Route::post('cp', 'HomeController@loadCP');
+Route::post('cp', 'HomeController@getCP');
 
 Route::post('contacto', 'HomeController@contacto');
 

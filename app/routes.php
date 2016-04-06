@@ -42,6 +42,8 @@ Route::get('error/{dump}', 'QuoteController@tratarError');
 
 Route::get('aviso-privacidad', 'HomeController@getAviso');
 
+Route::post('cambiar-formato', 'HomeController@cambiarFormato');
+
 // Intento de API REST.
 Route::post('webhook', 'UriController@webHook');
 

@@ -10,20 +10,7 @@ $(document).ready(function()
         if(!valido())
             return;
 
-        $('.modal-body').css('text-align', 'center');
-        $('#common-modal .modal-body').append($('<img>').attr('src', 'js/ajax_spinner.gif'));
-
-        $('#common-modal .modal-body > p').css({
-            'font-size' : '1.5em',
-            'font-weight' :  'bold'
-        });
-        $('#common-modal .modal-body > p').html('Tu cotización está siendo procesada<br> Un momento, por favor.');
-
-        $('.modal-footer button').css({
-            'display' : 'none'
-        });
-
-        $('#common-modal').modal();
+        $('#loading-modal').modal();
 
     });
 });

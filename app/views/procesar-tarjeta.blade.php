@@ -17,3 +17,7 @@
 	<p class="gidole" style="font-size: 2.5vw; color: #FFFFFF; margin: 0; ">COTIZAMOS EL MEJOR SEGURO PARA TI...</p>
 </div>
 @stop
+
+@section('modals')
+@include('modals')
+@stop

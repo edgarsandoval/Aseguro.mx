@@ -1,7 +1,36 @@
 $(document).ready(function()
 {
 	$('#btn-filtrar').click(procesarFiltro);
+
+	$('#btn-cambiar').click(procesarFormato);
 });
+
+function procesarFormato()
+{
+	var formato = $('input[type="radio"]:checked').val();
+
+	$.ajax(
+	{
+		url : 'cambiar-formato',
+		type : 'POST',
+		data :
+		{
+			'datos' : $('#datos').val(),
+			'forma-pago' : formato
+		},
+		beforeSend: function()
+		{
+        	$('#loading-modal').modal();
+    	},
+		success : function(response)
+		{
+			$('#loading-modal').modal('hide');
+			console.log(response);
+			cotizacion = $.parseJSON(response);
+			llenarCotizacion($.parseJSON(response));
+		}
+	});
+}
 
 function procesarFiltro()
 {
@@ -100,11 +129,20 @@ function procesarFiltro()
 NUEVA FUNCIÓN, YA PONE LOS NÚMEROS, por hacerlo rápido y no usar AJAX. :c
 
 Consultas en O(n) papá. :V
-**/ 
+**/
+
+// DESPUÉS DE HACER LA NUEVA CONSULTA CON AJAX SE PASA COMO PARAMETRO EL RESULTADO, SIN PEDOS JAJAJAJA ME ENCANTA
 
 function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nuevas filas, funciona. ;)
 {
 	$('.cotizaciones').empty();
+
+	if(!('Detalle' in cotizacionFiltrada.Detalles) || cotizacionFiltrada.Detalles.Detalle.length == 0)
+	{
+		$('#common-modal p').html('No hay resultados para este filtro / formato de pago <br> Por favor, inenta con otra opcion.');
+		$('#common-modal').modal();
+		return;
+	}
 
 	// Definicion de una variable local de PHP para reutilización de código. 
 	var paquete = new Array(null, 'Super Amplia', 'Amplia', 'Limitada Plus', 'Limitada', 'RC');
@@ -141,7 +179,8 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 		var masInfo = $('<div>').attr('class', 'row');
 
 		$('<div>', {
-			'class' : 'col-md-6' 
+			'class' : 'col-md-6',
+			'style' : 'padding: 0 !important;'
 		})
 		.append($('<p>').append($('<b>').html('Paquete : ')).append(paquete[parseInt(cotizacionFiltrada.Detalles.Detalle[i].Paquete)]))
 		.append($('<p>').append($('<b>').html('Prima Neta :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaNeta, 2, '.', ',')))
@@ -149,7 +188,8 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 		.appendTo(masInfo);
 
 		$('<div>', {
-			'class' : 'col-md-6' 
+			'class' : 'col-md-6',
+			'style' : 'padding: 0 !important;'
 		})
 		.append($('<p>').append($('<b>').html('Recargos :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Recargos, 2, '.', ',')))
 		.append($('<p>').append($('<b>').html('Descuento :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Descuento, 2, '.', ',')))
@@ -162,97 +202,31 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 
 		resultadoPrecio = $('<div>').attr('class', 'col-md-3').attr('style', 'display: flex;align-items: center;');
 
-		resultadoPrecio.append($('<p>').attr('class', 'costo-anual').html('$' + parseFloat(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal))).appendTo(resultado);
+		resultadoPrecio.append($('<p>').attr('class', 'costo-anual').html('$' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal, 2, '.', ','))).appendTo(resultado);
 
-		resultadoContratar = $('<div>').attr('class', 'col-md-2').attr('style', 'background-color: #F9F9F9; text-align: center;');
+		resultadoContratar = $('<div>').attr({
+				'class' : 'col-md-2',
+				'style' : 'display: flex; align-items: center; background-color: #F9F9F9; text-align: center;'
+			});
 
-			FormularioContratar = $('<form>').attr('action', 'pagar').attr('method', 'POST').attr('id', 'frm-' + cotizacionFiltrada.Detalles.Detalle[i].id);
 			
-			FormularioContratar.append($('<input>').attr('type', 'hidden').attr('name', 'id').val(cotizacionFiltrada.Detalles.Detalle[i].id));
-			FormularioContratar.append($('<input>').attr('type', 'hidden').attr('name', 'monto').val(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal));
+			//FormularioContratar.append($('<input>').attr('type', 'hidden').attr('name', 'id').val(cotizacionFiltrada.Detalles.Detalle[i].id));
+			//FormularioContratar.append($('<input>').attr('type', 'hidden').attr('name', 'monto').val(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal));
 
-			for(var k in cliente)
-			{
-				FormularioContratar.append($('<input>').attr('type', 'hidden').attr('name', k).val(cliente[k]));
-			}
-
-			//var k = 1;
-
-			// form
-
-			// for(var k = 1; k <= 3; k++)
-			// {
-				FormularioContratar.append('<div class="row" style="text-align: left; padding: 0">' +
-						'<div class="col-md-12" style="padding: 0;">' +
-							'<div class="radio">' +
-								'<label>' +
-										'<input type="radio" name="opcion" value="1" checked>' +
-							    		'Pago Bancario' +
-								'</label>' +
-							'</div>' +
-						'</div>' +
-					'</div>'
-				);
-
-				FormularioContratar.append('<div class="row" style="text-align: left; padding: 0">' +
-						'<div class="col-md-12" style="padding: 0;">' +
-							'<div class="radio">' +
-								'<label>' +
-										'<input type="radio" name="opcion" value="2">' +
-							    		'Pago Tarjeta' +
-								'</label>' +
-							'</div>' +
-						'</div>' +
-					'</div>'
-				);
-
-				FormularioContratar.append('<div class="row" style="text-align: left; padding: 0">' +
-						'<div class="col-md-12" style="padding: 0;">' +
-							'<div class="radio">' +
-								'<label>' +
-										'<input type="radio" name="opcion" value="3">' +
-							    		'Pago en Tiendas' +
-								'</label>' +
-							'</div>' +
-						'</div>' +
-					'</div>'
-				);
-			// }
-
-			FormularioContratar.append($('<div>').attr('class', 'col-md-12').attr('style', 'padding: 0 !important;').append(
-				$('<input>').attr('type', 'submit').attr('id', 'btn' + cotizacionFiltrada.Detalles.Detalle[i].id).attr('class', 'btn btn-default').val('PROCEDER PAGO')
-				)
-			).appendTo(resultadoContratar);
-
-		resultadoContratar.append($('<p>').attr('class', 'gidole').html('ó'));
-
-		resultadoContratar.append($('<div>').attr('class', 'col-md-12').append(
-						'<form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">' +
-					        '<input type="hidden" name="cmd" value="_xclick">' +
-					        '<input type="hidden" name="business" value="edgar@sitiorandom.com">' +
-					        '<input type="hidden" name="item_name" value="Póliza aseguro.mx">' +
-					        '<input type="hidden" name="currency_code" value="MXN">' +
-					        '<input type="hidden" name="amount" value="' + cotizacionFiltrada.Detalles.Detalle[i].MontosPrimaTotal+ '">' +
-					        '<input type="image" src="http://www.paypal.com/es_XC/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - its fast, free and secure!">' +
-					    '</form>' 
-			)
-		).appendTo(resultado);
+		resultadoContratar.append($('<div>', {
+			'class' : 'col-md-12',
+			'style' : 'padding: 0 !important;'
+		}).append($('<input>', {
+			'type' : 'submit',
+			'id' : 'btn' + cotizacionFiltrada.Detalles.Detalle[i].id,
+			'class' : 'btn-cotizar btn btn-default btn-lg',
+			'value' : 'PROCEDER PAGO'
+		}))).appendTo(resultado);
 
 		$('.cotizaciones').append(resultado);
 
 	}
 }
-
-function opcionRadio(k)
-{
-	if(k == 1)
-		return $('<label>').append($('<input>').attr('type', 'radio').attr('name', 'opcion').val(k).attr('checked', true)).append('Pago Bancario');
-	if(k == 2)
-		return $('<label>').append($('<input>').attr('type', 'radio').attr('name', 'opcion').val(k)).append('Pago Tarjeta');
-	else
-		return $('<label>').append($('<input>').attr('type', 'radio').attr('name', 'opcion').val(k)).append('Pago en Tiendas');
-}
-
 
 function number_format(n, c, d, t)
 {
@@ -266,15 +240,3 @@ function number_format(n, c, d, t)
 
    return s + (j ? i.substr(0, j) + t : "") + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + t) + (c ? d + Math.abs(n - i).toFixed(c).slice(2) : "");
  };
-
-// for(var k = 1; k <= 3; k++)
-// {
-// 	FormularioContratar.append($('<div>').attr('class', 'row').attr('style', 'text-align: left; padding: 0;').append(
-// 			$('div').attr('class', 'col-md-12').attr('style', 'padding: 0;').append(
-// 				$('<div>').attr('class', 'radio').append(
-// 					opcionRadio(k)
-// 				)
-// 			)
-// 		)
-// 	);
-// }

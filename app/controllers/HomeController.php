@@ -390,6 +390,59 @@ class HomeController extends BaseController {
 		return $companias->Companias;
 	}
 
+	public function cambiarFormato()
+	{
+		$datos = json_decode(Input::get('datos'), true);
+
+
+		$WebService = "http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
+
+		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
+
+		//Invocación al web service
+		$WS = new SoapClient ($WebService);
+
+		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
+		$xml = "";
+
+		$xml = "<Request>
+					<DatosObligatorios>
+						<Vehiculo>
+							<Tipo>" . $datos['tipo'] . "</Tipo>
+							<Modelo>" . $datos['modelo'] . "</Modelo>
+							<ClaveInterna>" . $datos['clave-interna'] . "</ClaveInterna>
+						</Vehiculo>
+						<Zonificacion>
+							<CPCirculacion>" . $datos['cp-circulacion'] . "</CPCirculacion>
+							<CPFacturacion>" . $datos['cp-facturacion'] . "</CPFacturacion>
+						</Zonificacion>
+						<Conductor>
+							<Genero>" . $datos['genero'] . "</Genero>
+							<Edad>" . $datos['edad'] . "</Edad>
+						</Conductor>
+					</DatosObligatorios>
+					<DatosOpcionales>
+						<FormaPago>" . Input::get('forma-pago') ."</FormaPago>
+					</DatosOpcionales>
+				</Request>";
+
+
+		$request = array ( 'Token' => $accesos , 'Request' => $xml);
+
+		try
+		{
+			$cotizacion = $WS->Cotiza($request);
+			$cotizacion = \simplexml_load_string($cotizacion->CotizaResult);
+			return json_encode($cotizacion);
+		}
+		catch (Exception $e)
+		{
+			$mensaje = "Hubo un error en el servidor, por favor intenta de nuevo.";
+			return $mensaje;
+		}
+
+	}
+
 	public function cotizar()
 	{
 		/*$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
@@ -439,6 +492,17 @@ class HomeController extends BaseController {
 			
 		}*/
 
+		$datos = array(
+			'tipo' => Input::get('vehicle-type'),
+			'modelo' => Input::get('model'),
+			'clave-interna' => Input::get('description'),
+			'cp-circulacion' => Input::get('cp'),
+			'cp-facturacion' => Input::get('cp'),
+			'genero' => Input::get('user-gender'),
+			'edad' => Input::get('user-age'),
+			'forma-pago' => Input::get('payment-method')
+		);
+
 		$cotizacion = json_decode('{"Cotizacion_Id":"1277","FechaCotizacion":"04\/04\/2016","HoraCotizacion":"12:33:18 p.m.","Vigencia":{"Inicial":"04\/04\/2016","Final":"04\/04\/2017"},"FormaPago":"4","Detalles":{"Detalle":[{"id":"16806","Paquete":"4","Compania":"105","Montos":{"PrimaNeta":"7128.94","GastosExpedicion":"600","Recargos":"598.12","Descuento":"0","IVA":"1332.33","PrimaTotal":"9659.39"}},{"id":"16807","Paquete":"2","Compania":"105","Montos":{"PrimaNeta":"20039.73","GastosExpedicion":"600","Recargos":"1681.33","Descuento":"0","IVA":"3571.37","PrimaTotal":"25892.43"}},{"id":"16808","Paquete":"2","Compania":"106","Montos":{"PrimaNeta":"35300.51","GastosExpedicion":"430","Recargos":"3177.05","Descuento":"0","IVA":"6225.21","PrimaTotal":"45132.77"}},{"id":"16809","Paquete":"4","Compania":"106","Montos":{"PrimaNeta":"16190.14","GastosExpedicion":"430","Recargos":"1457.11","Descuento":"0","IVA":"2892.36","PrimaTotal":"20969.61"}},{"id":"16810","Paquete":"4","Compania":"4","Montos":{"PrimaNeta":"5897.14","GastosExpedicion":"450","Recargos":"589.71","Descuento":"0","IVA":"1109.9","PrimaTotal":"8046.75"}},{"id":"16811","Paquete":"2","Compania":"4","Montos":{"PrimaNeta":"16579.03","GastosExpedicion":"450","Recargos":"1657.9","Descuento":"0","IVA":"2989.91","PrimaTotal":"21676.84"}},{"id":"16812","Paquete":"4","Compania":"12","Montos":{"PrimaNeta":"17382.38","GastosExpedicion":"460","Recargos":"1460.12","Descuento":"0","IVA":"3088.4","PrimaTotal":"22390.9"}},{"id":"16813","Paquete":"2","Compania":"12","Montos":{"PrimaNeta":"28342.35","GastosExpedicion":"460","Recargos":"1672.87","Descuento":"-8427.19","IVA":"3527.69","PrimaTotal":"25575.73"}}]}}');
 
 		$companias = $this->getCompanias();
@@ -480,6 +544,7 @@ class HomeController extends BaseController {
        	setlocale(LC_ALL, 'es_MX.UTF-8');
 
 		return View::make('quote', array(
+				'datos' => $datos,
 				'cotizacion' => $cotizacion,
 				'cliente' => $cliente,
 				'marca' => Input::get('marca'),

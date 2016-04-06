@@ -156,5 +156,7 @@
 			</div>
 		</div>
 	</div>
+
+	@yield('modals')
 </body>
 </html>

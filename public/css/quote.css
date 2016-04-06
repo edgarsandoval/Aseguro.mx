@@ -102,7 +102,15 @@ div.radio
     margin-bottom: 0;
 }
 
-div#filtros
+div#filtros,
+div#filtros-pago
 {
     padding: 1em;
+}
+
+button#btn-cambiar
+{
+    background-color: #EC4424;
+    color: #FFFFFF;
+    margin-top: 1em;
 }

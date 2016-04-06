@@ -1,9 +1,10 @@
-
 <script type="text/javascript">
+	// ESTOY CONSIENTE DE QUE ESTO NO SE HACE, PERO... ES LA MANERA MÁS FÁCIL Y MENOS TARDADA
 	var cotizacion = <?php echo json_encode($cotizacion); ?>; // Para mayor facilidad en cuanto a los filtros, por no hacer muchas consultas se guarda el objeto resultante;
 	var companias = <?php echo json_encode($companias); ?>; // Requerido para hace la actualización de los resultados.
 	var cliente = <?php echo json_encode($cliente); ?>; // También;
-	var companiasInfo = <?php echo json_encode($companiasInfo); ?>;
+	var companiasInfo = <?php echo json_encode($companiasInfo); ?>; //...
+	// 
 </script>
 <div id="background-cotizar-home" style="margin-bottom: 3em;">
 	<p class="gidole title-cotizar">
@@ -20,8 +21,7 @@
 	</div>
 
 	<div id="filtros" class="row">
-		<div class="col-md-3"></div>
-		<div class="col-md-5">
+		<div class="col-md-5 col-md-offset-3">
 			<span class="gidole">Filtrar por : </span>
 			<select id="filtrar">
 				<option selected disabled hidden value="0">Ningún filtro</option>
@@ -32,9 +32,56 @@
 			</select>
 		</div>
 		<div class="col-md-1">
-			<button id="btn-filtrar" class="btn btn-default">Filtrar</button>
+			<button id="btn-filtrar" class="btn btn-default gidole">FILTRAR</button>
 		</div>
 		<div class="col-md-3"></div>
+	</div>
+
+	<div id="filtros-pago" class="row" style="margin-bottom: 1em;">
+		<div class="col-md-5 col-md-offset-3">
+			<span class="gidole">Probar con : </span>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="radio">
+						<label>
+							<input type="radio" name="payment-method" value="4" {{(4 == $datos['forma-pago'] ? 'checked': '')}}>
+							Mensual
+						</label>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="radio">
+						<label>
+							<input type="radio" name="payment-method" value="3" {{(3 == $datos['forma-pago'] ? 'checked': '')}}>
+							Trimestral
+						</label>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="radio">
+						<label>
+							<input type="radio" name="payment-method" value="2" {{(2 == $datos['forma-pago'] ? 'checked': '')}}>
+							Semestral
+						</label>
+					</div>
+				</div>
+
+				<div class="col-md-3">
+					<div class="radio">
+						<label>
+							<input type="radio" name="payment-method" value="1" {{(1 == $datos['forma-pago'] ? 'checked': '')}}>
+							Anual
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-1">
+			<input type="hidden" id="datos" value='{{ json_encode($datos); }}'>
+			<button id="btn-cambiar" class="btn btn-default gidole">CAMBIAR FORMATO</button>
+		</div>
 	</div>
 
 	<div class="cotizaciones">
@@ -68,7 +115,7 @@
 				</div>
 				<div class="col-md-2" style="display: flex;align-items: center;background-color: #F9F9F9; text-align: center;">
 					<div class="col-md-12" style="padding: 0 !important;">
-						<input type="submit" id="btn{{$cotizacion->Detalles->Detalle[$i]->id}}" class="btn-cotizar btn btn-default btn-lg" value="PROCEDER PAGO">
+						<input type="button" id="{{$cotizacion->Detalles->Detalle[$i]->id}}" class="btn-cotizar btn btn-default btn-lg" value="PROCEDER PAGO">
 					</div>
 				</div>
 			</div>

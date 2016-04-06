@@ -152,6 +152,8 @@ class QuoteController extends BaseController {
 		curl_close($ch);
 	}
 
+	
+
 	public function tratarError($dump)
 	{
 		dd($dump);

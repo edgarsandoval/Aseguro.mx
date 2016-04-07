@@ -201,6 +201,7 @@ function cotizar(){
 
     $('#frm-cotizar').append($('<input type="hidden">').attr('name', 'marca').val($('#trademark option:selected').html()))
     $('#frm-cotizar').append($('<input type="hidden">').attr('name', 'sub-marca').val($('#sub-trademark option:selected').html()))
+    $('#frm-cotizar').append($('<input type="hidden">').attr('name', 'descripcion').val($('#description option:selected').html()))
 
     //console.log($("#vehicle-type").val(), $("#model").val(), $("#description").val(),$("#cp").val(),genero, age);
 

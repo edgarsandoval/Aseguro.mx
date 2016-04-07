@@ -2,6 +2,14 @@
 
 class QuoteController extends BaseController {
 
+	public function cargarDatos()
+	{
+		return View::make('completar', Input::all());
+		dd(Input::all());
+		//$request = Request::create('/tipos', 'GET', array());
+		//dd(Route::dispatch($request));
+	}
+
 	public function procesarPago()
 	{
 		switch (intval(Input::get('opcion')))
@@ -92,7 +100,7 @@ class QuoteController extends BaseController {
 
 		$mensaje = 'Cargo ejecutado con exito, revise su bandeja';
 		
-		rreturn Redirect::to('/')->with('message', $mensaje);
+		return Redirect::to('/')->with('message', $mensaje);
 	}
 
 

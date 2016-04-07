@@ -91,54 +91,8 @@ class HomeController extends BaseController {
 
 		$mensaje = Session::get('message', null);
 
-
-		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
-
-		//Invocación al web service
-		$WS = new SoapClient ($WebService);
-
-
-		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
-		$token = array ( 'Token' => $accesos );
-		$resultado = $WS->GetRelacionTipoVehiculo($token);
-		//recibimos la respuesta dentro de un objeto
-
-		//Mostramos el resultado de la consulta
-		$resultado = \simplexml_load_string($resultado->GetRelacionTipoVehiculoResult);
-		$tipos = array();
-
-		foreach($resultado->TipoVehiculoEncontrado->TipoVehiculo as $typo) {
-			//echo $typo->TipoVehiculoBase;
-			//echo $typo->Descripcion;
-			array_push($tipos,$typo);
-		}
-
-		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Zonificacion.svc?wsdl";
-
-
-		//Invocación al web service
-		$WS = new SoapClient ($WebService);
-
-
-		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
-		$xml = "<EstadosRequest><Pais>MEX</Pais></EstadosRequest>";
-
-
-		$request = array ( 'user' => $accesos , 'RequestStr' => $xml);
-
-
-
-		$resultado = $WS->GetRelacionEstado($request);
-
-		//Mostramos el resultado de la consulta
-		$resultado = \simplexml_load_string($resultado->GetRelacionEstadoResult);
-		$estados = array();
-
-		//dd($resultado);
-
-		foreach($resultado->EstadosEncontrados->Estado as $estado) {
-			array_push($estados,$estado);
-		}
+		$tipos = $this->getTipos();
+		$estados = $this->getEstados();
 
 		return View::make('index', array('tipos' => $tipos, 'estados' => $estados, 'mensaje' => $mensaje));
 	}
@@ -175,6 +129,62 @@ class HomeController extends BaseController {
 		}
 	}
 
+	public function getTipos()
+	{
+		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/ConsultasModelos.svc?wsdl";
+
+		//Invocación al web service
+		$WS = new SoapClient ($WebService);
+
+
+		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
+		$token = array ( 'Token' => $accesos );
+		$resultado = $WS->GetRelacionTipoVehiculo($token);
+		//recibimos la respuesta dentro de un objeto
+
+		//Mostramos el resultado de la consulta
+		$resultado = \simplexml_load_string($resultado->GetRelacionTipoVehiculoResult);
+		$tipos = array();
+
+		foreach($resultado->TipoVehiculoEncontrado->TipoVehiculo as $typo) {
+			//echo $typo->TipoVehiculoBase;
+			//echo $typo->Descripcion;
+			array_push($tipos,$typo);
+		}
+
+		return $tipos;
+	}
+
+	public function getEstados()
+	{
+
+		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Zonificacion.svc?wsdl";
+
+
+		//Invocación al web service
+		$WS = new SoapClient ($WebService);
+
+
+		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
+		$xml = "<EstadosRequest><Pais>MEX</Pais></EstadosRequest>";
+
+
+		$request = array ( 'user' => $accesos , 'RequestStr' => $xml);
+
+
+
+		$resultado = $WS->GetRelacionEstado($request);
+
+		//Mostramos el resultado de la consulta
+		$resultado = \simplexml_load_string($resultado->GetRelacionEstadoResult);
+		$estados = array();
+
+		//dd($resultado);
+
+		foreach($resultado->EstadosEncontrados->Estado as $estado) {
+			array_push($estados,$estado);
+		}
+	}
 
 	public function getModels()
 	{
@@ -550,6 +560,7 @@ class HomeController extends BaseController {
 				'marca' => Input::get('marca'),
 				'submarca' => Input::get('sub-marca'),
 				'modelo' => Input::get('model'),
+				'descripcion' => Input::get('descripcion'),
 				'companias' => $companias,
 				'companiasInfo' => $companiasInfo,
 				'paquete' => $paquete

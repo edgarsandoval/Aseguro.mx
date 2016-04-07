@@ -24,7 +24,7 @@
 		<div class="col-md-5 col-md-offset-3">
 			<span class="gidole">Filtrar por : </span>
 			<select id="filtrar">
-				<option selected disabled hidden value="0">Ningún filtro</option>
+				<option selected value="0">Ningún filtro</option>
 				<option value="1">Precio</option>
 				<option value="2">Cobertura RC</option>
 				<option value="3">Cobertura Limitada</option>
@@ -84,6 +84,14 @@
 		</div>
 	</div>
 
+	{{ Form::open(['action' => 'QuoteController@cargarDatos', 'method' => 'POST'])	}}
+		<input type="hidden" id="nombre" name="nombre" value="{{$cliente['nombre']}}">
+		<input type="hidden" id="cotizacion-id" name="cotizacion_id" value="">
+		<input type="hidden" id="pago" name="pago" value="">
+		<input type="hidden" id="cobertura" name="cobertura" value="">
+		<input type="hidden" id="formato" name="formato" value="">
+		<input type="hidden" id="descripcion" name="descripcion" value="{{$descripcion}}">
+	{{ Form::close() }}
 	<div class="cotizaciones">
 		@for ($i = 0; $i < count($cotizacion->Detalles->Detalle); $i++) 
 			<div id="{{$cotizacion->Detalles->Detalle[$i]->id}}" class="row gidole fila-cotizar" style="border-bottom: 2px solid #eee;">
@@ -115,7 +123,7 @@
 				</div>
 				<div class="col-md-2" style="display: flex;align-items: center;background-color: #F9F9F9; text-align: center;">
 					<div class="col-md-12" style="padding: 0 !important;">
-						<input type="button" id="{{$cotizacion->Detalles->Detalle[$i]->id}}" class="btn-cotizar btn btn-default btn-lg" value="PROCEDER PAGO">
+						<input type="button" charge-data="{{$cotizacion->Detalles->Detalle[$i]->id}}" class="btn-cotizar btn btn-default btn-lg" value="PROCEDER PAGO">
 					</div>
 				</div>
 			</div>

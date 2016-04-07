@@ -246,6 +246,13 @@ nav.mobile-menu li
     padding-bottom: 15px;
 }
 
+.row
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
 /*TEMPORALMENTE SIN SOLUCIÓN :(*/
 /*.row
 {

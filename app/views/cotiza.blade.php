@@ -23,7 +23,7 @@
 							<option selected disabled hidden value>Marca:</option>
 						</select>
 
-						<select id="sub-trademark" name="sub-trademark" onchange="loadDescription()" required>
+						<select id="sub-trademark" name="sub-trademark" onchange="loadDescription();" required>
 							<option selected disabled hidden value>Submarca:</option>
 						</select>
 

@@ -3,7 +3,22 @@ $(document).ready(function()
 	$('#btn-filtrar').click(procesarFiltro);
 
 	$('#btn-cambiar').click(procesarFormato);
+
+	$('.btn-cotizar').click(cargarDatos);
 });
+
+function cargarDatos()
+{
+	var idCotizacion = $(this).attr('charge-data');
+	console.log(idCotizacion);
+
+	$('#cotizacion-id').val(idCotizacion);
+	$('#pago').val(parseFloat($('div#' + idCotizacion + ' .col-md-3:last p').html().split('$')[1].split(',').join('')));
+	$('#cobertura').val($('div#' + idCotizacion + ' .col-md-6 p:first').html().trim().split(' ')[2]);
+	$('#formato').val($('input[type="radio"]:checked').parent().html().trim().split('>')[1].trim());
+
+	$('form').submit();
+}
 
 function procesarFormato()
 {
@@ -34,7 +49,7 @@ function procesarFormato()
 
 function procesarFiltro()
 {
-	if($('#filtrar').val() == null)
+	if($('#filtrar').val() == 0)
 	{
 		$('#common-modal p').html('Selecciona un filtro de la lista');
 		$('#common-modal').modal();
@@ -182,18 +197,18 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 			'class' : 'col-md-6',
 			'style' : 'padding: 0 !important;'
 		})
-		.append($('<p>').append($('<b>').html('Paquete : ')).append(paquete[parseInt(cotizacionFiltrada.Detalles.Detalle[i].Paquete)]))
-		.append($('<p>').append($('<b>').html('Prima Neta :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaNeta, 2, '.', ',')))
-		.append($('<p>').append($('<b>').html('Gastos Expedicion :')).append(' $ ' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.GastosExpedicion, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('Paquete: ')).append(paquete[parseInt(cotizacionFiltrada.Detalles.Detalle[i].Paquete)]))
+		.append($('<p>').append($('<b>').html('Prima Neta:')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaNeta, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('Gastos Expedicion:')).append(' $ ' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.GastosExpedicion, 2, '.', ',')))
 		.appendTo(masInfo);
 
 		$('<div>', {
 			'class' : 'col-md-6',
 			'style' : 'padding: 0 !important;'
 		})
-		.append($('<p>').append($('<b>').html('Recargos :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Recargos, 2, '.', ',')))
-		.append($('<p>').append($('<b>').html('Descuento :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Descuento, 2, '.', ',')))
-		.append($('<p>').append($('<b>').html('IVA :')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.IVA, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('Recargos:')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Recargos, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('Descuento:')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.Descuento, 2, '.', ',')))
+		.append($('<p>').append($('<b>').html('IVA:')).append(' $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.IVA, 2, '.', ',')))
 		.appendTo(masInfo);
 
 		resultadoInformacion.append(masInfo);
@@ -217,13 +232,14 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 			'class' : 'col-md-12',
 			'style' : 'padding: 0 !important;'
 		}).append($('<input>', {
-			'type' : 'submit',
-			'id' : 'btn' + cotizacionFiltrada.Detalles.Detalle[i].id,
+			'type' : 'button',
+			'charge-data' : cotizacionFiltrada.Detalles.Detalle[i].id,
 			'class' : 'btn-cotizar btn btn-default btn-lg',
 			'value' : 'PROCEDER PAGO'
 		}))).appendTo(resultado);
 
 		$('.cotizaciones').append(resultado);
+		$('.btn-cotizar').click(cargarDatos);
 
 	}
 }

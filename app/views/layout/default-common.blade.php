@@ -13,9 +13,9 @@
 	<link rel="stylesheet" href="{{ asset('css/common.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 	
-	{{ HTML::style( asset('css/quote.css')) }}
-	{{ HTML::style( asset('css/pago-tarjeta.css')) }}
+
 	{{ HTML::style( asset('css/aseguros.css')) }}
+	@yield('style')
 
 	<!--  JS's -->
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -28,8 +28,7 @@
 	<script src="{{ asset('js/common.js') }}"></script>
 
 	{{ HTML::script( asset('js/aseguros.js')) }}
-	{{ HTML::script( asset('js/cotizar-home.js')) }}
-	{{ HTML::script( asset('js/pago-tarjeta.js')) }}
+	@yield('script')
 
 	<!--Start of Zopim Live Chat Script-->
 	<script type="text/javascript">
@@ -77,7 +76,7 @@
 		</div>
 	</div>
 
-	<div id="home-cotizar">
+	<div id="main">
 		@yield('home')
 	</div>
 	

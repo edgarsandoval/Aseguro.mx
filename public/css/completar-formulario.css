@@ -1,0 +1,80 @@
+div#background-completar
+{
+	padding: 0em 17vw;
+}
+
+.title-completar
+{
+    font-size: 1.75em;
+    margin: 1em;
+    color: #0D0F42;
+    text-align: center;
+}
+
+p.title-completar > span
+{
+	color: #EC4424;
+}
+
+div#tabla-formulario div
+{
+    background-color: #EC4424;
+    color: #FFFFFF;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 1em;
+} 
+
+.form-info
+{
+	background-color: #E6E7E8;
+	text-align: center;
+	font-size: 1.2vw;
+	color: #0D0F42;
+	padding: 1em;
+}
+
+.form-info h1,
+.form-info span
+{
+	color: #EC4424 !important;
+	text-transform: uppercase;
+}
+
+
+.form-option
+{
+	cursor: pointer;
+	font-size: 1.5em;
+	color: #0D0F42;
+	border-bottom: 1px solid #E6E7E8;
+	width: 100%;
+	padding: 1em;
+
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
+.form-option:hover,
+.form-option.selected
+{
+	color: #FFFFFF;
+	background-color: #0D0F42 !important;
+	border: none;
+}
+
+.option-container
+{
+	background-color: #F9F9F9;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+
+.form-content
+{
+	background-color: #E6E7E8;
+	color: #0D0F42;
+}

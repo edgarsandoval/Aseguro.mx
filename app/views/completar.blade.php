@@ -1,20 +1,15 @@
 @extends('layout.default-common')
 
 @section('style')
-{{ HTML::style( asset('css/pago-tarjeta.css'))}}
+{{ HTML::style( asset('css/completar-formulario.css'))}}
 @stop
 
 @section('script')
-{{ HTML::script( asset('js/pago-tarjeta.js')) }}
+{{ HTML::script( asset('js/completar-formulario.js')) }}
 @stop
 
-
 @section('home')
-<div class="col-md-3"></div>
-<div class="col-md-6">
-@include('formulario-tarjeta')
-</div>
-<div class="col-md-3"></div>
+@include('completar-formulario')
 @stop
 
 @section('aseguros')
@@ -30,3 +25,4 @@
 @section('modals')
 @include('modals')
 @stop
+

@@ -1,4 +1,12 @@
-@extends('layout.default-quote')
+@extends('layout.default-common')
+
+@section('style')
+{{ HTML::style( asset('css/cotizar-home.css'))}}
+@stop
+
+@section('script')
+{{ HTML::script( asset('js/cotizar-home.js')) }}
+@stop
 
 @section('home')
 @include('cotizar-home')
@@ -17,3 +25,4 @@
 @section('modals')
 @include('modals')
 @stop
+

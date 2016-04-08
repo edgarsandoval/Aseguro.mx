@@ -4,10 +4,17 @@ class QuoteController extends BaseController {
 
 	public function cargarDatos()
 	{
-		return View::make('completar', Input::all());
-		dd(Input::all());
-		//$request = Request::create('/tipos', 'GET', array());
-		//dd(Route::dispatch($request));
+		$request = Request::create('/estados', 'GET', array());
+		$estados = Route::dispatch($request)->original;
+		return View::make('completar', array(
+			'nombre' => Input::get('nombre'),
+			'cotizacion-id' => Input::get('cotizacion-id'),
+			'pago' => Input::get('pago'),
+			'cobertura' => Input::get('cobertura'),
+			'formato' => Input::get('formato'),
+			'descripcion' => Input::get('descripcion'),
+			'estados' => $estados
+			));
 	}
 
 	public function procesarPago()

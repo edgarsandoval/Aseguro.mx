@@ -89,6 +89,12 @@ class HomeController extends BaseController {
 
 		//dd(DB::table('prueba')->get());
 
+		// $mysqli = new mysqli("localhost:8889", "root", "root", "aseguro_local");
+		// if ($mysqli->connect_errno) {
+		//     printf("Falló la conexión: %s\n", $mysqli->connect_error);
+		//     exit();
+		// }
+
 		$mensaje = Session::get('message', null);
 
 		$tipos = $this->getTipos();
@@ -184,6 +190,8 @@ class HomeController extends BaseController {
 		foreach($resultado->EstadosEncontrados->Estado as $estado) {
 			array_push($estados,$estado);
 		}
+
+		return $estados;
 	}
 
 	public function getModels()
@@ -539,6 +547,12 @@ class HomeController extends BaseController {
 			'106' => array('Telefono' => "01 800 900 1292", 'Pagina' => "https://axa.mx/home")
 
 		);
+
+		// foreach ($companiasInfo as $c)
+		// {
+		// 	# code...
+		// 	DB::table()
+		// }
 
 
         $paquete = array('2' => 'Amplia', '4' => 'Limitada', '5' => 'RC', '3' => 'Limitada Plus', '1' => 'Super Amplia');

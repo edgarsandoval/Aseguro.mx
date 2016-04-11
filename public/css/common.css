@@ -18,7 +18,9 @@
 	font-family: 'Gidole' !important;
 }
 
-.radio 
+.radio,
+input,
+select
 {
     font-family: 'Gidole' !important;
 }

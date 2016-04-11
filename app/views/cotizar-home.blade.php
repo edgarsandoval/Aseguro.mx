@@ -91,6 +91,9 @@
 		<input type="hidden" id="cobertura" name="cobertura" value="">
 		<input type="hidden" id="formato" name="formato" value="">
 		<input type="hidden" id="descripcion" name="descripcion" value="{{$descripcion}}">
+		<input type="hidden" id="tipo" name="tipo" value={{$datos['tipo']}}>
+		<input type="hidden" id="clave-interna" name="clave-interna" value={{$datos['clave-interna']}}>
+		<input type="hidden" id="modelo" name="modelo" value="{{$modelo}}">
 	{{ Form::close() }}
 	<div class="cotizaciones">
 		@for ($i = 0; $i < count($cotizacion->Detalles->Detalle); $i++) 

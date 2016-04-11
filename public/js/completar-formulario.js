@@ -6,11 +6,54 @@ $(document).ready(function()
 		$('.form-option').removeClass('selected');
 		$(this).addClass('selected');
 	});
+
+    $('#btn-continuar').click(function()
+    {
+        var actual = parseInt($('#no-pag').val());
+        var siguiente = actual + 1;
+
+        $('.form-option').removeClass('selected');
+        $($('div.col-md-2 .option-container .form-option')[siguiente - 1]).addClass('selected');
+
+        if(siguiente == 3)
+            $('#btn-continuar').hide();
+        else
+            $('#btn-continuar').show();
+
+        for(var i = 1; i <= 3; i++)
+            if(i == actual + 1)
+                $('#form-page-' + siguiente).show();
+            else
+                $('#form-page-' + i).hide();
+
+        $('#no-pag').val(siguiente);
+    });
 });
+
+function setPage(number)
+{
+    $('.form-option').removeClass('selected');
+    $($('div.col-md-2 .option-container .form-option')[number - 1]).addClass('selected');
+
+    if(number == 3)
+        $('#btn-continuar').hide();
+    else
+        $('#btn-continuar').show();
+    
+    var actual = $('#no-pag').val(number);    
+
+    for(var i = 1; i <= 3; i++)
+            if(i == number)
+                $('#form-page-' + i).show();
+            else
+                $('#form-page-' + i).hide();
+}
 
 function loadMunicipios()
 {
     $("#municipios").empty().append("<option>-Cargando-</option>");
+    $('input[name="frm-ubicacion"]').val($("#estados").val());
+    $('#ubicacion').val($("#estados option:selected").html());
     $.ajax(
         {
             url: "municipios",

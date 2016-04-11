@@ -13,7 +13,10 @@ class QuoteController extends BaseController {
 			'cobertura' => Input::get('cobertura'),
 			'formato' => Input::get('formato'),
 			'descripcion' => Input::get('descripcion'),
-			'estados' => $estados
+			'estados' => $estados,
+			'tipo' => Input::get('tipo'),
+			'claveInterna' => Input::get('clave-interna'),
+			'modelo' => Input::get('modelo')
 			));
 	}
 

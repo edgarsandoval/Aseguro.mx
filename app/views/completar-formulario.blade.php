@@ -19,20 +19,21 @@
 
 				<p class="gidole">Cobertura<br><span>{{ $cobertura }}</span></p>
 				<p class="gidole">Pago<br><span>{{ $formato }}</span></p>
-				<p class="gidole" style="text-transform: uppercase;margin-top: 1em;">{{ $descripcion }}</p>
+				<p class="gidole" style="text-transform: uppercase; margin-top: 1em;">{{ $descripcion }}</p>
 			</div>
 			<div class="col-md-2" style="padding: 0;">
 				<div class="option-container">
-					<div class="gidole form-option selected">Datos Asegurado</div>
+					<div class="gidole form-option selected" onclick="setPage(1);">Datos Asegurado</div>
 				</div>
 				<div class="option-container">
-					<div class="gidole form-option">Datos Asegurado</div>
+					<div class="gidole form-option" onclick="setPage(2);">Datos Vehículo</div>
 				</div>
 				<div class="option-container">
-					<div class="gidole form-option">Información Pago</div>
+					<div class="gidole form-option" onclick="setPage(3);">Información Pago</div>
 				</div>
 			</div>
 			<div class="col-md-8 form-content">
+				<input id="no-pag" type="hidden" value="1">
 				<div id="form-page-1">
 					<div class="row">
 						<div class="col-md-4">
@@ -168,8 +169,8 @@
 						</div>
 
 						<div class="col-md-4" style="padding-top: 2em;">
-							<select>
-								<option value="1">Pais</option>		
+							<select name="frm-pais" value="1" disabled>
+								<option value="1">México</option>		
 							</select>
 						</div>
 					</div>
@@ -219,15 +220,49 @@
 
 					<div class="row">
 						<div class="col-md-4">
-							<input type="text" name="frm-telefono" placeholder="Teléfono" required>
+							<div class="row">
+								<div class="col-md-4">
+									<input type="text" name="frm-codigo-tel" required>
+								</div>
+								<div class="col-md-8">
+									<input type="text" name="frm-telefono" placeholder="Teléfono" required>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-4">
-							<input type="text" name="frm-celular" placeholder="Celular" required>
+							<div class="row">
+								<div class="col-md-4">
+									<input type="text" name="frm-codigo-cel" required>
+								</div>
+								<div class="col-md-8">
+									<input type="text" name="frm-celular" placeholder="Celular" required>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-4">
-							<input type="text" name="frm-correo" placeholder="E-mail" required>
+							<input type="email" name="frm-correo" placeholder="E-mail" required>
 						</div>
 					</div>
+				</div>
+
+				<div id="form-page-2" style="display:none; padding-top: 4em;">
+					<input type="hidden" name="frm-tipo" value="{{$tipo}}">
+					<input type="hidden" name="frm-clave-interna" value="{{$claveInterna}}">
+					<input type="hidden" name="frm-modelo" value="{{$modelo}}">
+					<div class="row">
+						<div class="col-md-6 col-md-offset-3">
+							<input type="text" name="frm-no-serie" placeholder="No. Serie" required>
+							<input type="text" name="frm-no-motor" placeholder="No. Motor" required>
+							<input type="text" name="frm-placas" placeholder="Placas(Opcional)">
+							<input type="text" name="frm-repuve" placeholder="REPUVE(Opcional)">
+							<input type="text" name="frm-color" placeholder="Color(Opcional)">
+							<input type="text" id="ubicacion" disabled>
+							<input type="hidden" name="frm-ubicacion" palceholder="Ubicación">
+						</div>
+					</div>
+				</div>
+				<div id="form-page-3" style="display:none;">
+
 				</div>
 
 			</div>
@@ -236,8 +271,8 @@
 
 
 	<div class="row">
-		<div class="col-md-12" style="text-align: center;">
-			<button class="gidole btn btn-default btn-lg">Continuar>></button>
+		<div class="col-md-12" style="text-align: center; padding: 1em;">
+			<button id="btn-continuar" class="gidole btn btn-default btn-lg">Continuar>></button>
 		</div>
 	</div>
 </div>

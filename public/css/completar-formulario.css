@@ -88,10 +88,46 @@ h1.gidole
 	padding: 3em;
 }
 
-button#btn-continuar
+button#btn-continuar,
+button#btn-emitir
 {
     background-color: #EC4424;
     color: #FFFFFF;
     border-radius: 0;
     font-size: 1.5em;
+}
+
+.row
+{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display:         flex;
+}
+
+div.pago-opcion
+{
+	padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #EC4424;
+    border-left-width: 5px;
+    border-radius: 3px;
+    background-color: #F9F9F9;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.5em;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 1em;
+
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+	-o-transition: all .5s;
+	transition: all .5s;
+}
+
+div.pago-opcion.selected,
+div.pago-opcion:hover
+{
+	border-color: #0D0F42 !important;
 }

@@ -20,8 +20,18 @@ class QuoteController extends BaseController {
 			));
 	}
 
+	public function guardarPoliza()
+	{
+		//dd(Input::all());
+
+		return Redirect::action('QuoteController@procesarPago', array(
+			'opcion' => Input::get('opcion')
+			));
+	}
+
 	public function procesarPago()
 	{
+		dd(Input::all());
 		switch (intval(Input::get('opcion')))
 		{
 			case 1:

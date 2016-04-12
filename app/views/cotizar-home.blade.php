@@ -71,7 +71,7 @@
 				<div class="col-md-3">
 					<div class="radio">
 						<label>
-							<input type="radio" name="payment-method" value="1" {{(1 == $datos['forma-pago'] ? 'checked': '')}}>
+							<input type="radio" name="payment-method" value="5" {{(1 == $datos['forma-pago'] ? 'checked': '')}}>
 							Anual
 						</label>
 					</div>

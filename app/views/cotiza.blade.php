@@ -157,7 +157,7 @@
 							<div class="col-md-3">
 								<div class="radio">
 									<label>
-										<input type="radio" name="payment-method" value="1">
+										<input type="radio" name="payment-method" value="5">
 										Anual
 									</label>
 								</div>

@@ -33,6 +33,7 @@
 				</div>
 			</div>
 			<div class="col-md-8 form-content">
+				{{ Form::open(['action' => 'QuoteController@guardarPoliza', 'method' => 'POST']) }}
 				<input id="no-pag" type="hidden" value="1">
 				<div id="form-page-1">
 					<div class="row">
@@ -97,8 +98,10 @@
 
 					<div class="row">
 						<div class="col-md-4">
-							<select>
-								<option value="Estado Civil"></option>
+							<select name="frm-edocivil">									
+								<option value="C">Casado</option>
+								<option value="S">Soltero</option>
+								<option value="O">Otro</option>
 							</select>
 						</div>
 						<div class="col-md-4">
@@ -262,8 +265,21 @@
 					</div>
 				</div>
 				<div id="form-page-3" style="display:none;">
+					<input type="hidden" name="opcion">
+					<!-- <p class="gidole" style="text-align: center; font-size: 1.5em; "> Formas de pago disponibles: </p> -->
+					@if($formato == 'Anual')
+						<div class="gidole pago-opcion" onclick="setPayment(3);">Pago en tiendas</div>
+						<div class="gidole pago-opcion" onclick="setPayment(1);">Pago en banco</div>
+					@endif
+					<div class="gidole pago-opcion" onclick="setPayment(2);">Pago con tarjeta</div>
+					<div class="row" style="text-align: center; padding-top: 2em;">
+						<div class="col-md-12">
+							<button id="btn-emitir" type="submit" class="gidole btn btn-default btn-lg"> Emitir póliza>> </button>
+						</div>
+					</div>
 
 				</div>
+				{{ Form::close() }}
 
 			</div>
 		</div>

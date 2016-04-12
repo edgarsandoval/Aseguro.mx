@@ -28,6 +28,12 @@ $(document).ready(function()
 
         $('#no-pag').val(siguiente);
     });
+
+    $('.pago-opcion').click(function()
+    {
+    	$('.pago-opcion').removeClass('selected');
+		$(this).addClass('selected');
+    });
 });
 
 function setPage(number)
@@ -47,6 +53,12 @@ function setPage(number)
                 $('#form-page-' + i).show();
             else
                 $('#form-page-' + i).hide();
+}
+
+
+function setPayment(id)
+{
+	$('input[name="opcion"]').val(id);
 }
 
 function loadMunicipios()

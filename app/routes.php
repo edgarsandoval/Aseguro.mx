@@ -39,7 +39,7 @@ Route::post('cotizar', 'HomeController@cotizar');
 //
 // Cotizar --
 
-Route::post('pagar', 'QuoteController@procesarPago');
+Route::get('pagar', 'QuoteController@procesarPago');
 
 Route::get('pago-banco', 'QuoteController@cargoBanco');
 
@@ -50,6 +50,8 @@ Route::get('pago-tienda', 'QuoteController@cargoTienda');
 Route::post('cambiar-formato', 'HomeController@cambiarFormato');
 
 Route::post('proceder', 'QuoteController@cargarDatos');
+
+Route::post('cargarPoliza', 'QuoteController@guardarPoliza');
 
 //
 // Comunes --

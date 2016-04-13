@@ -6,6 +6,9 @@
 </head>
 
 <body>
+	<?php
+	    setlocale(LC_TIME, "es_ES");
+	?>
 	<div class="margen">
 		<div class="header">
 			<div class="Logo-Top"><img src="{{ asset('images/comprobante/logo.png')}}" alt="Logo"></div>
@@ -15,7 +18,7 @@
 				<h1 class="gidole" style="color: #141942;">CANTIDAD A PAGAR</h1>
 				<h2 class="gidole" style="color: #C1482F;">${{$charge->amount}}<span>MXN</span></h2>
 				<h1 class="gidole" style="color: #141942;">Fecha límite de pago:</h1>
-				<h1 class="gidole" style="color: #5D5D5D; font-size: 17px;">25 de noviembre del 2014 - 3:20 PM</h1>
+				<h1 class="gidole" style="color: #5D5D5D; font-size: 17px;">{{strftime("%A %d de %B de %G - ", strtotime('+ 1 day', strtotime($charge->creation_date))) . date('h:i:s A', strtotime('- 5 hour', strtotime($charge->creation_date)))}}</h1>
 			</div>
 			<div class="Adorno" style="display:none;">
 				<img src="{{asset('images/comprobante/tira.png')}}" alt="tira">

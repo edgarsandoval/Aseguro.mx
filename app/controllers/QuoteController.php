@@ -8,7 +8,7 @@ class QuoteController extends BaseController {
 		$estados = Route::dispatch($request)->original;
 		return View::make('completar', array(
 			'nombre' => Input::get('nombre'),
-			'cotizacion-id' => Input::get('cotizacion-id'),
+			'cotizacion_id' => Input::get('cotizacion_id'),
 			'pago' => Input::get('pago'),
 			'cobertura' => Input::get('cobertura'),
 			'formato' => Input::get('formato'),
@@ -24,14 +24,63 @@ class QuoteController extends BaseController {
 	{
 		//dd(Input::all());
 
+		$prefix = 'frm-';
+
+		$data = array(
+			'order_id' => 'oid-' . Input::get('id'),
+			'monto' => Input::get('monto'),
+			'cotizacion_id' => Input::get('id'),
+			'vigencia_inicial' => date('d/m/Y'),
+			'vigencia_final' => date('d/m/Y', strtotime ( '+1 year' , strtotime ( date('d/m/Y')))),
+			'personalidad' => Input::get($prefix . 'persona'),
+			'rfc' => Input::get($prefix . 'rfc'), 
+			'pol_exp' => Input::get($prefix . 'expuesto'),
+			'primer_nombre' => Input::get($prefix . 'nombre'),
+			'apellido_paterno' => Input::get($prefix . 'apellidop'),
+			'apellido_materno' => Input::get($prefix . 'apellidom'),
+			'genero' => Input::get($prefix . 'sexo'),
+			'edo_civil' => Input::get($prefix . 'edocivil'),
+			'curp' => Input::get($prefix . 'curp') ? : null, 
+			'ocupacion' => Input::get($prefix . 'ocupacion'),
+			'fecha_nacimiento' => Input::get('user-day') . '/' . Input::get('user-month') . '/' . Input::get('user-year'),
+			'calle' => Input::get($prefix . 'calle'),
+			'no_exterior' => Input::get($prefix . 'noext'),
+			'no_interior' => Input::get($prefix . 'noint') ? : null,
+			'colonia' => Input::get($prefix . 'colonia'),
+			'cod_postal' => Input::get('cp'),
+			'estado' => Input::get('estados'),
+			'municipio' => Input::get('municipios'),
+			'particular_area' => Input::get($prefix . 'codigo-tel'),
+			'particular_numero' => Input::get($prefix . 'telefono'),
+			'movil_area' => Input::get($prefix . 'codigo-cel'),
+			'movil_numero' => Input::get($prefix . 'celular'),
+			'email' => Input::get($prefix . 'correo'),
+			'tipo' => Input::get($prefix . 'tipo'),
+			'modelo' => Input::get($prefix . 'modelo'),
+			'clave_interna' => Input::get($prefix . 'clave-interna'),
+			'no_serie' => Input::get($prefix . 'no-serie'),
+			'no_motor' => Input::get($prefix . 'no-motor'),
+			'placas' => Input::get($prefix . 'placas') ? : null,
+			'REPUVE' => Input::get($prefix . 'repuve') ? : null
+			);
+
+
+		DB::table('emisiones')->insert($data);	
+
 		return Redirect::action('QuoteController@procesarPago', array(
-			'opcion' => Input::get('opcion')
+			'opcion' => Input::get('opcion'),
+			'id' => Input::get('id'),
+			'monto' => Input::get('monto'),
+			'nombre' => $data['primer_nombre'],
+			'apellido' => $data['apellido_paterno'],
+			'telefono' => $data['particular_numero'],
+			'email' => $data['email']
 			));
 	}
 
 	public function procesarPago()
 	{
-		dd(Input::all());
+		//d(Input::all());
 		switch (intval(Input::get('opcion')))
 		{
 			case 1:

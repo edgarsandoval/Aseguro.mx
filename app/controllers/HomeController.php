@@ -20,7 +20,7 @@ class HomeController extends BaseController {
 
 		// Pruebas :) 
 
-		/*$url = 'http://localhost:8888/aseguro.mx/public/webhook';
+		$url = 'http://localhost:8888/aseguro.mx/public/webhook';
 		$object = '{
 		    "type" : "charge.succeeded",
 		    "event_date" : "2013-11-22T15:09:38-06:00",
@@ -57,7 +57,7 @@ class HomeController extends BaseController {
 		        "creation_date" : "2013-11-22T15:09:33-06:00",
 		        "description" : "Description",
 		        "error_message" : null,
-		        "order_id" : "oid_14235"
+		        "order_id" : "oid-17692"
 		    }
 		}';
 		$fields = array(
@@ -85,15 +85,7 @@ class HomeController extends BaseController {
 		curl_close($ch);
 		die();
 
-		// Fin de pruebas :) */
-
-		//dd(DB::table('prueba')->get());
-
-		// $mysqli = new mysqli("localhost:8889", "root", "root", "aseguro_local");
-		// if ($mysqli->connect_errno) {
-		//     printf("Falló la conexión: %s\n", $mysqli->connect_error);
-		//     exit();
-		// }
+		// Fin de pruebas :)
 
 		$mensaje = Session::get('message', null);
 
@@ -463,16 +455,12 @@ class HomeController extends BaseController {
 
 	public function cotizar()
 	{
-		/*$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
-
-		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
-
+		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
 
 		//Invocación al web service
 		$WS = new SoapClient ($WebService);
 
 		$accesos = array ( 'Usuario' => 'fgexterno', 'Password' => 'fgexterno2015*' );
-
 
 		$xml = "<Request>
 					<DatosObligatorios>
@@ -508,7 +496,7 @@ class HomeController extends BaseController {
 			$mensaje = "Hubo un error en el servidor, por favor intenta de nuevo.";
 			return Redirect::to('/')->with('message', $mensaje);
 			
-		}*/
+		}
 
 		$datos = array(
 			'tipo' => Input::get('vehicle-type'),
@@ -521,7 +509,7 @@ class HomeController extends BaseController {
 			'forma-pago' => Input::get('payment-method')
 		);
 
-		$cotizacion = json_decode('{"Cotizacion_Id":"1277","FechaCotizacion":"04\/04\/2016","HoraCotizacion":"12:33:18 p.m.","Vigencia":{"Inicial":"04\/04\/2016","Final":"04\/04\/2017"},"FormaPago":"4","Detalles":{"Detalle":[{"id":"16806","Paquete":"4","Compania":"105","Montos":{"PrimaNeta":"7128.94","GastosExpedicion":"600","Recargos":"598.12","Descuento":"0","IVA":"1332.33","PrimaTotal":"9659.39"}},{"id":"16807","Paquete":"2","Compania":"105","Montos":{"PrimaNeta":"20039.73","GastosExpedicion":"600","Recargos":"1681.33","Descuento":"0","IVA":"3571.37","PrimaTotal":"25892.43"}},{"id":"16808","Paquete":"2","Compania":"106","Montos":{"PrimaNeta":"35300.51","GastosExpedicion":"430","Recargos":"3177.05","Descuento":"0","IVA":"6225.21","PrimaTotal":"45132.77"}},{"id":"16809","Paquete":"4","Compania":"106","Montos":{"PrimaNeta":"16190.14","GastosExpedicion":"430","Recargos":"1457.11","Descuento":"0","IVA":"2892.36","PrimaTotal":"20969.61"}},{"id":"16810","Paquete":"4","Compania":"4","Montos":{"PrimaNeta":"5897.14","GastosExpedicion":"450","Recargos":"589.71","Descuento":"0","IVA":"1109.9","PrimaTotal":"8046.75"}},{"id":"16811","Paquete":"2","Compania":"4","Montos":{"PrimaNeta":"16579.03","GastosExpedicion":"450","Recargos":"1657.9","Descuento":"0","IVA":"2989.91","PrimaTotal":"21676.84"}},{"id":"16812","Paquete":"4","Compania":"12","Montos":{"PrimaNeta":"17382.38","GastosExpedicion":"460","Recargos":"1460.12","Descuento":"0","IVA":"3088.4","PrimaTotal":"22390.9"}},{"id":"16813","Paquete":"2","Compania":"12","Montos":{"PrimaNeta":"28342.35","GastosExpedicion":"460","Recargos":"1672.87","Descuento":"-8427.19","IVA":"3527.69","PrimaTotal":"25575.73"}}]}}');
+		// $cotizacion = json_decode('{"Cotizacion_Id":"1277","FechaCotizacion":"04\/04\/2016","HoraCotizacion":"12:33:18 p.m.","Vigencia":{"Inicial":"04\/04\/2016","Final":"04\/04\/2017"},"FormaPago":"4","Detalles":{"Detalle":[{"id":"16806","Paquete":"4","Compania":"105","Montos":{"PrimaNeta":"7128.94","GastosExpedicion":"600","Recargos":"598.12","Descuento":"0","IVA":"1332.33","PrimaTotal":"9659.39"}},{"id":"16807","Paquete":"2","Compania":"105","Montos":{"PrimaNeta":"20039.73","GastosExpedicion":"600","Recargos":"1681.33","Descuento":"0","IVA":"3571.37","PrimaTotal":"25892.43"}},{"id":"16808","Paquete":"2","Compania":"106","Montos":{"PrimaNeta":"35300.51","GastosExpedicion":"430","Recargos":"3177.05","Descuento":"0","IVA":"6225.21","PrimaTotal":"45132.77"}},{"id":"16809","Paquete":"4","Compania":"106","Montos":{"PrimaNeta":"16190.14","GastosExpedicion":"430","Recargos":"1457.11","Descuento":"0","IVA":"2892.36","PrimaTotal":"20969.61"}},{"id":"16810","Paquete":"4","Compania":"4","Montos":{"PrimaNeta":"5897.14","GastosExpedicion":"450","Recargos":"589.71","Descuento":"0","IVA":"1109.9","PrimaTotal":"8046.75"}},{"id":"16811","Paquete":"2","Compania":"4","Montos":{"PrimaNeta":"16579.03","GastosExpedicion":"450","Recargos":"1657.9","Descuento":"0","IVA":"2989.91","PrimaTotal":"21676.84"}},{"id":"16812","Paquete":"4","Compania":"12","Montos":{"PrimaNeta":"17382.38","GastosExpedicion":"460","Recargos":"1460.12","Descuento":"0","IVA":"3088.4","PrimaTotal":"22390.9"}},{"id":"16813","Paquete":"2","Compania":"12","Montos":{"PrimaNeta":"28342.35","GastosExpedicion":"460","Recargos":"1672.87","Descuento":"-8427.19","IVA":"3527.69","PrimaTotal":"25575.73"}}]}}');
 
 		$companias = $this->getCompanias();
 
@@ -547,13 +535,6 @@ class HomeController extends BaseController {
 			'106' => array('Telefono' => "01 800 900 1292", 'Pagina' => "https://axa.mx/home")
 
 		);
-
-		// foreach ($companiasInfo as $c)
-		// {
-		// 	# code...
-		// 	DB::table()
-		// }
-
 
         $paquete = array('2' => 'Amplia', '4' => 'Limitada', '5' => 'RC', '3' => 'Limitada Plus', '1' => 'Super Amplia');
 

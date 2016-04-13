@@ -34,6 +34,8 @@
 			</div>
 			<div class="col-md-8 form-content">
 				{{ Form::open(['action' => 'QuoteController@guardarPoliza', 'method' => 'POST']) }}
+				<input type="hidden" name="id" value="{{$cotizacion_id}}">
+				<input type="hidden" name="monto" value="{{$pago}}">				
 				<input id="no-pag" type="hidden" value="1">
 				<div id="form-page-1">
 					<div class="row">
@@ -44,7 +46,7 @@
 								<div class="col-md-6">
 									<div class="radio">
 										<label>
-											<input type="radio" name="frm-persona" value="H" checked>
+											<input type="radio" name="frm-persona" value="1" checked>
 										    Física
 										</label>
 									</div>
@@ -52,7 +54,7 @@
 								<div class="col-md-6">
 									<div class="radio">
 									 	<label>
-									    	<input type="radio" name="frm-persona" value="M">
+									    	<input type="radio" name="frm-persona" value="2">
 									    	Moral
 									  	</label>
 									</div>
@@ -140,28 +142,29 @@
 					</div>
 					<br>
 					<div class="row">
+						<input type="hidden" name="frm-age" >
 						<div class="col-md-4">
 							<p class="gidole">Fecha de nacimiento:</p>
 								<div class="row">
 									<div class="col-md-4" style="padding-right: 0;">
-										<select id="user-day" required>
+										<select name="user-day" required>
 											<option selected disabled hidden value> -- </option>
 											@for($i = 31; $i >= 1; $i--)
-												<option value="{{$i}}">{{ ($i < 10 ? '0' . $i : $i ) }}</option>
+												<option value="{{($i < 10 ? '0' . $i : $i )}}">{{ ($i < 10 ? '0' . $i : $i ) }}</option>
 											@endfor
 										</select>
 									</div>
 									<div class="col-md-4" style="padding-right: 0;">
-										<select id="user-month" required>
+										<select name="user-month" required>
 											<option selected disabled hidden value> -- </option>
 											@for($i = 12; $i >= 1; $i--)
-												<option value="{{$i}}">{{ ($i < 10 ? '0' . $i : $i ) }}</option>
+												<option value="{{($i < 10 ? '0' . $i : $i )}}">{{ ($i < 10 ? '0' . $i : $i ) }}</option>
 											@endfor
 
 										</select>
 									</div>
 									<div class="col-md-4" style="padding-right: 0;">
-										<select id="user-year" required>
+										<select name="user-year" required>
 											<option selected disabled hidden value> ---- </option>
 											@for($i = 2016; $i >= 1916; $i--)
 												<option value="{{$i}}">{{ ($i < 10 ? '0' . $i : $i ) }}</option>

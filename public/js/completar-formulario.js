@@ -34,6 +34,7 @@ $(document).ready(function()
     	$('.pago-opcion').removeClass('selected');
 		$(this).addClass('selected');
     });
+
 });
 
 function setPage(number)

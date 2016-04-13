@@ -2,12 +2,15 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title></title>
+<title>¡ Gracias por tu preferencia !</title>
 {{ HTML::style( asset('css/common.css'))}}
 {{ HTML::style( asset('css/pago-tienda.css')) }}
 </head>
 
 <body>
+<?php
+    setlocale(LC_TIME, "es_ES");
+?>
 
 <div class="whitepaper">
 	<div class="Header">
@@ -53,7 +56,7 @@
         </div>
     	<div class="table-row color1">
         	<div><h4 style="color: #141942; margin: 0;">Fecha y hora</h4></div>
-            <span><h4 style="color: #141942; margin: 0;">{{$charge->creation_date}}</h4></span>
+            <span><h4 style="color: #141942; margin: 0;">{{strftime("%A %d de %B de %G - ", strtotime($charge->creation_date)) . date('h:i:s A', strtotime('- 5 hour', strtotime($charge->creation_date)))}}</h4></span>
         </div>
     	<div class="table-row color1">
         	<div><h4 style="color: #141942; margin: 0;">Correo del cliente</h4></div>

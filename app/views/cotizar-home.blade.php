@@ -71,7 +71,7 @@
 				<div class="col-md-3">
 					<div class="radio">
 						<label>
-							<input type="radio" name="payment-method" value="5" {{(1 == $datos['forma-pago'] ? 'checked': '')}}>
+							<input type="radio" name="payment-method" value="5" {{(5 == $datos['forma-pago'] ? 'checked': '')}}>
 							Anual
 						</label>
 					</div>
@@ -111,18 +111,18 @@
 					<div class="row">
 						<div class="col-md-6" style="padding: 0;">
 							<p><b>Paquete: </b> {{ $paquete[(string) $cotizacion->Detalles->Detalle[$i]->Paquete] }}</p>
-							<p><b>Prima Neta: </b> {{ '$' . number_format($cotizacion->Detalles->Detalle[$i]->Montos->PrimaNeta, 2, '.', ',') }}</p>
-							<p><b>Gastos Expedicion: </b> {{ '$' . number_format($cotizacion->Detalles->Detalle[$i]->Montos->GastosExpedicion, 2, '.', ',') }}</p>
+							<p><b>Prima Neta: </b> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Montos->PrimaNeta), 2, '.', ',') }}</p>
+							<p><b>Gastos Expedicion: </b> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Montos->GastosExpedicion), 2, '.', ',') }}</p>
 						</div>
 						<div class="col-md-6" style="padding: 0;">
-							<p><b>Recargos: </b> {{ '$' . number_format($cotizacion->Detalles->Detalle[$i]->Montos->Recargos, 2, '.', ',') }}</p>
-							<p><b>Descuento: </b> {{ '$' . number_format($cotizacion->Detalles->Detalle[$i]->Montos->Descuento, 2, '.', ',') }}</p>
-							<p><b>IVA: </b> {{ '$' . number_format($cotizacion->Detalles->Detalle[$i]->Montos->IVA, 2, '.', ',') }}</p>
+							<p><b>Recargos: </b> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Montos->Recargos), 2, '.', ',') }}</p>
+							<p><b>Descuento: </b> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Montos->Descuento), 2, '.', ',') }}</p>
+							<p><b>IVA: </b> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Montos->IVA), 2, '.', ',') }}</p>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-3" style="display: flex;align-items: center;">
-					<p class="costo-anual"> {{ '$' . number_format($cotizacion->Detalles->Detalle[$i]->Montos->PrimaTotal, 2, '.', ',') }} </p>
+					<p class="costo-anual"> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[0]->Montos->PrimaTotal), 2, '.', ',') }} </p>
 				</div>
 				<div class="col-md-2" style="display: flex;align-items: center;background-color: #F9F9F9; text-align: center;">
 					<div class="col-md-12" style="padding: 0 !important;">

@@ -184,7 +184,7 @@ class UriController extends BaseController {
 							</Vehiculo>
 						</Request>';
 
-
+				dd(file_put_contents("myxmlfile.xml", $xml));
 				//dd(simplexml_load_string($xml));
 
 

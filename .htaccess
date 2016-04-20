@@ -10,3 +10,6 @@ RewriteRule ^(.*)$ /public/$1 [L]
 
 RewriteCond %{HTTP_HOST} ^(www.)?aseguro.mx$ [NC]
 RewriteRule ^(/)?$ public/ [L]
+
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https:www.//%{HTTP_HOST}%{REQUEST_URI}

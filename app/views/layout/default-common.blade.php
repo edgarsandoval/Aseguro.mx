@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 	<meta charset="UTF-8">
 	<title>Aseguro :: Webpage consulta todo</title>
@@ -9,7 +9,7 @@
 	<!-- CSS's -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="http://css-plus.com/examples/2013/10/jquery-image-slider/fancybox/jquery.fancybox-1.3.1.css">
+	<link rel="stylesheet" href="{{ asset('css/jquery.fancybox-1.3.1.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/common.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.css') }}">
 	
@@ -22,9 +22,9 @@
 	<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
 	<script src="https://rawgit.com/bencorlett/jquery-before-after/master/jquery.beforeafter-1.4.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script src="http://css-plus.com/examples/2013/10/jquery-image-slider/fancybox/jquery.fancybox-1.3.1.js"></script>
   	<script type="text/javascript" src="https://openpay.s3.amazonaws.com/openpay.v1.min.js"></script>
 	<script type='text/javascript' src="https://openpay.s3.amazonaws.com/openpay-data.v1.min.js"></script>
+	<script src="{{ asset('js/jquery.fancybox-1.3.1.js') }}"></script>
 	<script src="{{ asset('js/common.js') }}"></script>
 
 	{{ HTML::script( asset('js/aseguros.js')) }}

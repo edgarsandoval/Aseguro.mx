@@ -1,3 +1,4 @@
+
 <script type="text/javascript">
 	// ESTOY CONSIENTE DE QUE ESTO NO SE HACE, PERO... ES LA MANERA MÁS FÁCIL Y MENOS TARDADA
 	var cotizacion = <?php echo json_encode($cotizacion); ?>; // Para mayor facilidad en cuanto a los filtros, por no hacer muchas consultas se guarda el objeto resultante;
@@ -98,7 +99,7 @@
 	<div class="cotizaciones">
 		@for ($i = 0; $i < count($cotizacion->Detalles->Detalle); $i++) 
 			<div id="{{$cotizacion->Detalles->Detalle[$i]->id}}" class="row gidole fila-cotizar" style="border-bottom: 2px solid #eee;">
-				<div class="col-md-3" style="display: flex;align-items: center;">
+				<div class="col-md-3" style="display: flex; align-items: center;">
 					@for($j = 0; $j < count($companias->Compania); $j++)
 						@if((string) $companias->Compania[$j]->Id === (string) $cotizacion->Detalles->Detalle[$i]->Compania)
 							<span style="text-align: center;"><a href="{{$companiasInfo[intval($companias->Compania[$j]->Id)]['Pagina']}}" target="_blank"><img src="{{$companias->Compania[$j]->Img}}"></a></sapn>
@@ -121,8 +122,18 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-md-3" style="display: flex;align-items: center;">
-					<p class="costo-anual"> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[0]->Montos->PrimaTotal), 2, '.', ',') }} </p>
+				@if($cotizacion->FormaPago == 5)
+					<div class="col-md-3" style="display: flex; align-items: center;">
+				@else 
+					<div class="col-md-3" style="text-align: center;">
+				@endif
+					@if($cotizacion->FormaPago == 5)
+						<p class="costo-anual"> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Montos->PrimaTotal), 2, '.', ',') }} </p>
+					@else
+						<p class="costo-anual"> {{ '$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Recibos->PrimaTotal_1er), 2, '.', ',') }} </p>
+						<p style="font-size: 1.3em; margin-top: .8em;"> Los siguientes {{ '<b>' . $cotizacion->Detalles->Detalle[$i]->Recibos->NumRecibos_Sub . '</b> recibos de : <b>$' . number_format(floatval($cotizacion->Detalles->Detalle[$i]->Recibos->PrimaTotal_Sub )) . '</b>' }}</p>			
+					@endif
+					
 				</div>
 				<div class="col-md-2" style="display: flex;align-items: center;background-color: #F9F9F9; text-align: center;">
 					<div class="col-md-12" style="padding: 0 !important;">

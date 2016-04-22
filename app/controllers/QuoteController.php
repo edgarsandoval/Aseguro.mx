@@ -31,7 +31,7 @@ class QuoteController extends BaseController {
 			'monto' => Input::get('monto'),
 			'cotizacion_id' => Input::get('id'),
 			'vigencia_inicial' => date('d/m/Y'),
-			'vigencia_final' => date('d/m/Y', strtotime ( '+1 year' , strtotime ( date('d/m/Y')))),
+			'vigencia_final' => date('d/m/Y', strtotime('+1 year', strtotime( date('d-m-Y')))),
 			'personalidad' => Input::get($prefix . 'persona'),
 			'rfc' => Input::get($prefix . 'rfc'), 
 			'pol_exp' => Input::get($prefix . 'expuesto'),
@@ -80,7 +80,7 @@ class QuoteController extends BaseController {
 
 	public function procesarPago()
 	{
-		//d(Input::all());
+		//dd(Input::all());
 		switch (intval(Input::get('opcion')))
 		{
 			case 1:
@@ -158,6 +158,21 @@ class QuoteController extends BaseController {
 		try 
 		{
 			$charge = $openpay->charges->create($chargeData);
+
+			if(Input::get('plan'))
+			{
+				$planDataRequest = array(
+					'amount' => 150.00,
+					'status_after_retry' => 'cancelled',
+					'retry_times' => 2,
+					'name' => 'Plan Curso Verano',
+					'repeat_unit' => 'month',
+					'trial_days' => '30',
+					'repeat_every' => '1',
+					'currency' => 'MXN'
+					);
+			}
+
 		}
 		catch(Exception $e)
 		{

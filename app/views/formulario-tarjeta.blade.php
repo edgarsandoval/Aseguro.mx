@@ -17,19 +17,19 @@
                         </div>
                         <div class="sctn-row">
                             <div class="sctn-col l">
-                                <label>Nombre del titular</label><input type="text" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name">
+                                <label>Nombre del titular</label><input type="text" name="holder_name" placeholder="Como aparece en la tarjeta" autocomplete="off" data-openpay-card="holder_name">
                             </div>
                             <div class="sctn-col">
-                                <label>Número de tarjeta</label><input type="text" autocomplete="off" data-openpay-card="card_number"></div>
+                                <label>Número de tarjeta</label><input type="text" name="card_number" autocomplete="off" data-openpay-card="card_number"></div>
                             </div>
                             <div class="sctn-row">
                                 <div class="sctn-col l">
                                     <label>Fecha de expiración</label>
-                                    <div class="sctn-col half l"><input type="text" placeholder="Mes" data-openpay-card="expiration_month"></div>
-                                    <div class="sctn-col half l"><input type="text" placeholder="Año" data-openpay-card="expiration_year"></div>
+                                    <div class="sctn-col half l"><input type="text" name="expiration_month" placeholder="Mes" data-openpay-card="expiration_month"></div>
+                                    <div class="sctn-col half l"><input type="text" name="expiration_year" placeholder="Año" data-openpay-card="expiration_year"></div>
                                 </div>
                                 <div class="sctn-col cvv"><label>Código de seguridad</label>
-                                    <div class="sctn-col half l"><input type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2"></div>
+                                    <div class="sctn-col half l"><input type="text" name="cvv2" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2"></div>
                                 </div>
                             </div>
                             <div class="openpay"><div class="logo">Transacciones realizadas vía:</div>

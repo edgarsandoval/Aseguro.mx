@@ -215,10 +215,17 @@ function llenarCotizacion(cotizacionFiltrada) // Función para dibujar las nueva
 
 		resultadoInformacion.appendTo(resultado);
 
-		resultadoPrecio = $('<div>').attr('class', 'col-md-3').attr('style', 'display: flex;align-items: center;');
+		resultadoPrecio = $('<div>').attr('class', 'col-md-3').attr('style', (cotizacionFiltrada.FormaPago == 5 ? 'display: flex; align-items: center;' : 'text-align: center;'));
 
-		resultadoPrecio.append($('<p>').attr('class', 'costo-anual').html('$' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal, 2, '.', ','))).appendTo(resultado);
-
+		if(cotizacionFiltrada.FormaPago == 5)
+			resultadoPrecio.append($('<p>').attr('class', 'costo-anual').html('$' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Montos.PrimaTotal, 2, '.', ','))).appendTo(resultado);
+		else
+			resultadoPrecio.append($('<p>').attr('class', 'costo-anual').html('$' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Recibos.PrimaTotal_1er, 2, '.', ',')))
+						   .append($('<p>', {
+						   		'style' : 'font-size: 1.3em; margin-top: .8em;'
+						   }).html('Los siguientes <b>' + cotizacionFiltrada.Detalles.Detalle[i].Recibos.NumRecibos_Sub + '</b> recibos de : <b> $' + number_format(cotizacionFiltrada.Detalles.Detalle[i].Recibos.PrimaTotal_Sub ) + '</b>' ))
+						   .appendTo(resultado);
+		
 		resultadoContratar = $('<div>').attr({
 				'class' : 'col-md-2',
 				'style' : 'display: flex; align-items: center; background-color: #F9F9F9; text-align: center;'

@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+	<title>¡ Gracias por tu preferencia !</title>
 	{{ HTML::style( asset('css/common.css')) }}
 	{{ HTML::style( asset('css/comprobante-banco.css')) }}
 </head>
@@ -16,7 +17,7 @@
 		<div class="Data-container">
 			<div class="Data1">
 				<h1 class="gidole" style="color: #141942;">CANTIDAD A PAGAR</h1>
-				<h2 class="gidole" style="color: #C1482F;">${{$charge->amount}}<span>MXN</span></h2>
+				<h2 class="gidole" style="color: #C1482F;">${{number_format(floatval($charge->amount), 2, '.', ',')}}<span>MXN</span></h2>
 				<h1 class="gidole" style="color: #141942;">Fecha límite de pago:</h1>
 				<h1 class="gidole" style="color: #5D5D5D; font-size: 17px;">{{strftime("%A %d de %B de %G - ", strtotime('+ 1 day', strtotime($charge->creation_date))) . date('h:i:s A', strtotime('- 5 hour', strtotime($charge->creation_date)))}}</h1>
 			</div>
@@ -40,14 +41,17 @@
 			¿Tienes alguda duda o problema? Escíbenos a: <br>
 			<a href="mailto:contacto@aseguro.mx"><strong>contacto@aseguro.mx</strong></a></p>
 		</div>
-		<div class="buttons gidole">
+		<!-- <div class="buttons gidole">
 			<a href="javascript:void(0)" onclick="window.print()">Imprimir póliza</a>
-		</div>
+		</div> -->
 		<div class="Yellow3">
 		</div>
 	</div>
 	<div class="powered">
 		<img src="{{asset('images/comprobante/powered_openpay.png')}}" alt="Powered by Openpay">
 	</div>
+	<script type="text/javascript">
+    	window.print();
+	</script>
 </body>
 </html>';

@@ -18,74 +18,6 @@ class HomeController extends BaseController {
 	public function showWelcome()
 	{
 
-		// Pruebas :) 
-		// $url = 'http://localhost:8888/aseguro.mx/public/webhook';
-		// $object = '{
-		//     "type" : "charge.succeeded",
-		//     "event_date" : "2013-11-22T15:09:38-06:00",
-		//     "transaction" : {
-		//         "amount" : 2000.0,
-		//         "authorization" : "801585",
-		//         "method" : "card",
-		//         "operation_type" : "in",
-		//         "transaction_type" : "charge",
-		//         "card" : {
-		//             "type" : "debit",
-		//             "brand" : "mastercard",
-		//             "address" : {
-		//                "line1" : "Calle #1 Interior #2",
-		//                "line2" : null,
-		//                "line3" : null,
-		//                "state" : "Queretaro",
-		//                "city" : "Queretaro",
-		//                "postal_code" : "76040",
-		//                "country_code" : "MX"
-		//             },
-		//             "card_number" : "1881",
-		//             "holder_name" : "Card Holder",
-		//             "expiration_month" : "10",
-		//             "expiration_year" : "14",
-		//             "allows_charges" : true,
-		//             "allows_payouts" : true,
-		//             "creation_date" : "2013-11-22T15:09:32-06:00",
-		//             "bank_name" : "BBVA BANCOMER",
-		//             "bank_code" : "012"
-		//         },
-		//         "status" : "completed",
-		//         "id" : "tlxcm4vprtz74qoenuay",
-		//         "creation_date" : "2013-11-22T15:09:33-06:00",
-		//         "description" : "Description",
-		//         "error_message" : null,
-		//         "order_id" : "oid-17993"
-		//     }
-		// }';
-		// $fields = array(
-		// 	'object' => $object,
-		// );
-
-		// $fields_string = "";
-
-		// //url-ify the data for the POST
-		// foreach($fields as $key=>$value) { $fields_string .= $key.'='.$value.'&'; }
-		// rtrim($fields_string, '&');
-
-		// //open connection
-		// $ch = curl_init();
-
-		// //set the url, number of POST vars, POST data
-		// curl_setopt($ch,CURLOPT_URL, $url);
-		// curl_setopt($ch,CURLOPT_POST, count($fields));
-		// curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
-		// //execute post
-		// $result = curl_exec($ch);
-
-		// //close connection
-		// curl_close($ch);
-		// die();
-
-		// Fin de pruebas :)
-
 		$mensaje = Session::get('message', null);
 
 		$tipos = $this->getTipos();
@@ -454,7 +386,7 @@ class HomeController extends BaseController {
 
 	public function cotizar()
 	{
-		$WebService="http://fgseguros.aprosistema.com/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
+		$WebService="http://fgseguros.aprosistema.com/QA/CotizadorAutos/WebServices/Externos/Operaciones.svc?wsdl";
 
 		//Invocación al web service
 		$WS = new SoapClient ($WebService);

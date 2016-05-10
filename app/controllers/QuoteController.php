@@ -162,15 +162,28 @@ class QuoteController extends BaseController {
 			if(Input::get('plan'))
 			{
 				$planDataRequest = array(
-					'amount' => 150.00,
+					'amount' => Input::get('cargo'),
 					'status_after_retry' => 'cancelled',
 					'retry_times' => 2,
-					'name' => 'Plan Curso Verano',
+					'name' => 'Cobro de pólza (aseguro.mx)',
 					'repeat_unit' => 'month',
 					'trial_days' => '30',
 					'repeat_every' => '1',
 					'currency' => 'MXN'
 					);
+
+				$plan = $openpay->plans->add($planDataRequest);
+
+				$customer = $openpay->customers->add($cliente);
+
+				$cardDataRequest = array(
+					'holder_name' => 'Mi cliente uno',
+					'card_number' => '4111111111111111',
+					'cvv2' => '123',
+					'expiration_month' => '12',
+					'expiration_year' => '15'
+					);
+
 			}
 
 		}

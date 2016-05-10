@@ -1,0 +1,380 @@
+<script type="text/javascript">
+$(document).ready(function()
+{
+	var string = '<div style="text-align:center;font-size: 1.3em;">' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-plastia-facial/" class="raleway info">- Cirugía Plástica Facial</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-rinoplastia/" class="raleway info">- Cirugía de nariz (Rinoplastía)</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-menton/" class="raleway info">- Cirugía de mentón</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-orejas/" class="raleway info">- Cirugía de orejas</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-parpados/" class="raleway info">- Cirugía de Parpados</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-bolas-de-bichat/" class="raleway info">- Bolas de bichat</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-deformidades-congenitas/" class="raleway info">- Deformidades congénitas</a></p>' +
+	'</div>';
+
+	$('.filter-cirugia-facial').children().find('.figure-caption-description').html(string);
+
+	var string = '<div style="text-align:center;font-size: 1.3em;">' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-aumento-de-busto/" class="raleway info">- Cirugía de aumento de senos</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-remodelacion-de-busto/" class="raleway info">- Levantamiento de busto</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/ci-.rugia-reduccion-de-busto/" class="raleway info">- Reducción de senos</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-ginecomastia/" class="raleway info">- Ginecomastia (Reducción de pecho en hombres)</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-reconstruccion-de-busto/" class="raleway info">- Reconstrucción de busto post mastectomía</a></p>' +
+	'</div>';
+
+	$('.filter-cirugia-de-busto').children().find('.figure-caption-description').html(string);
+
+	var string = '<div style="text-align:center;font-size: 1.3em;">' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-liposuccion/" class="raleway info">- Cirugía de liposucción</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-abdominoplastia/" class="raleway info">- Cirugía para reafirmar abdomen (Abdominolastía)</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-lipoescultura/" class="raleway info">- Lipoescultura</a></p>' +
+	'</div>';
+
+	$('.filter-cirugia-corporal').children().find('.figure-caption-description').html(string)
+
+
+	var string = '<div style="text-align:center;font-size: 1.3em;">' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-remodelacion-de-gluteos" class="raleway info">- Remodelación de gluteos</a></p>' +
+	'</div>';
+
+	$('.filter-cirugia-de-gluteos').children().find('.figure-caption-description').html(string);
+
+	var string = '<div style="text-align:center;font-size: 1.3em;">' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-rellenos-faciales/" class="raleway info">- Rellenos faciales (soluciones)</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-botox/" class="raleway info">- Aplicaciones de Botox</a></p>' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-acondicionamiento-de-piel/" class="raleway info">- Reacondicionamiento de piel</a></p>' +
+	'</div>';
+
+	$('.filter-cirugia-de-piel').children().find('.figure-caption-description').html(string);
+
+	var string = '<div style="text-align:center;font-size: 1.3em;">' +
+	'<p><a href="http://www.alejandrorodriguez.com.mx/cirugia-reconstruccion-facial" class="raleway info">- Reconstrucción facial y corporal post trauma y post cancer</a></p>' +
+	'</div>';
+
+	$('.filter-atencion-medica-de-urgencia').children().find('.figure-caption-description').html(string);
+
+	if ($(window).width() <= 800)
+	{
+
+		var mobile = 'VER MÁS' + '&nbsp; <img style="margin-top: -0.13em;" src="http://www.alejandrorodriguez.com.mx/wp-content/uploads/2015/09/plus.png">';
+		$('h3').html(mobile);	
+		$('.filter-cirugia-facial').children().find('.figure-overlay grid-overlay-10').click(function()
+		{
+			console.log($(this).children().find('h3'.html()));
+			if($(this).find('h3').html() == mobile)
+				$(this).find('h3').html("CIRUGÍA FACIAL");
+			else
+				$(this).find('h3').html(mobile);
+		});
+		
+	}	
+	
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	$("textarea[name=comentarios]").attr('rows', 4);
+	
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function()
+{
+	if($('section.surgery-image .container-fullwidth').height() == 48)
+		window.location.reload();
+	
+	if($('section.surgery-image').length)
+	{
+		while($('section.surgery-image').height() <= $('section.surgery-image .container-fullwidth').height())  // Hay que estar seguro de que no truene. :v
+		{
+			console.log($('section.surgery-image').height() + " " + $('section.surgery-image .container-fullwidth').height());
+			$('section.surgery-image').height($('section.surgery-image .container-fullwidth').height() + $('.background').height() - 230);
+		}
+	}
+
+	$('footer .row > div:nth-child(1)').attr('class', 'col-md-4');
+	$('footer .row > div:nth-child(2)').attr(
+		{
+			'class': 'col-md-8 text-right',
+			'style' : 'border-left: 1px solid #6E6F72'
+		});
+	$('.footer-2').find('.col-md-4').attr('class', 'col-md-12')
+});
+</script>
+
+<style type="text/css">
+body
+{
+    background-image: url('http://www.alejandrorodriguez.com.mx/wp-content/uploads/2016/03/background-home-ARA.png') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #464646;
+    
+}
+
+#masthead .navbar-brand img 
+{
+	max-height : 80%;
+}
+
+.col-md-4, 
+.col-md-12, 
+.col-md-3,
+.col-md-6
+{
+    padding-left: 0px !important;
+    padding-right: 0px !important; 
+}
+
+.title-home
+{
+    color: #ee7061;
+    font-size: 3em;
+    padding-top: 1em;
+    letter-spacing: .3em; 
+}
+
+.background
+{
+    background-color: rgba(250,205,195,.5);
+    width: 100%;
+    position: relative;
+    z-index: 0;
+    text-align: center;
+    margin-top: -230px !important;
+    padding-top: 0.05px;
+}
+
+.title-surgery-abs
+{
+    color: #ee7061;
+    text-align: center !important;
+    margin-bottom: 50px;
+    margin-top: 1.5em;
+    letter-spacing: 0.4em;
+    font-size: 3em;
+}
+
+.info-surgery
+{
+    padding-left: 8.7%;
+    padding-right: 8.7%;
+    padding-top: 3%;
+}
+
+.title-surgery,
+h3.figure-caption-title.bordered.bordered-small
+{
+	font-size: 1.7em;
+    letter-spacing: .2em;
+    color: #323230;
+}
+
+.info
+{
+	font-size: 1.1em;
+	color : #323230 !important;
+}
+
+.col-md-12.text-default.small-screen-default
+{
+    padding-top: 7em;
+    padding-bottom: 5em;
+}
+
+li.menu-item > a 
+{
+    font-size: 1.7em;
+    letter-spacing: .1em;
+}
+
+section.section.swatch-black.section-text-no-shadow.section-inner-no-shadow.section-normal.section-opaque
+{
+	background-color: transparent;
+}
+
+.col-md-12 > img 
+{
+    width: 5.5em;
+    margin-right: 1em;
+}
+
+.figure-overlay
+{
+    background-color: rgba(247,226,219,0.8) !important;
+}
+
+.figure.element-no-top.element-no-bottom.image-filter-none.image-filter-onhover.fade-in.text-center.figcaption-middle.fullwidth 
+{
+    z-index: -1;
+}
+
+.col-md-3.text-default.small-screen-default,
+.col-md-4.text-default.small-screen-default,
+.col-md-6.text-default.small-screen-default   
+{
+    z-index: 1000 !important;
+}
+
+h3.figure-caption-title.bordered.bordered-small 
+{
+    letter-spacing: .1em !important;
+    padding-top: .1em;
+    font-family: 'Simplifica' !important;
+}
+
+.separador
+{
+    margin-bottom: 7em !important;
+}
+
+.col-md-5 
+{
+    border-right: 1px solid #89898b;
+}
+
+a.raleway.info:hover 
+{
+    font-weight: bold !important;
+    border-bottom: 1px solid black;
+}
+
+.force-full .col-md-12,
+.force-full .figure
+{
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+form.wpcf7-form
+{
+    padding: 1em 4em;
+}
+
+input[type=color], input[type=date], input[type=datetime-local], input[type=datetime], input[type=email], input[type=month], input[type=number], input[type=password], input[type=search], input[type=tel], input[type=text], input[type=time], input[type=url], input[type=week], select, textarea
+{
+    box-shadow: none;
+    text-shadow: none;
+    width: 100%;
+    background-color: transparent !important;
+    border: 2px solid white;
+    padding: .5em;
+    font-family: 'raleway';
+    color: #FFFFFF !important;
+}
+
+.swatch-white input[type="submit"]
+{
+    background-color: transparent !important;
+    color: #fff;
+    border: 2px solid #FFFFFF;
+    float: right;
+    border-radius: 10px;
+    text-transform: uppercase;
+    font-family: 'raleway';
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #FFFFFF !important;
+  font-style: normal !important; 
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: #FFFFFF !important;
+  font-style: normal !important; 
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: #FFFFFF !important;
+  font-style: normal !important; 
+}
+:-moz-placeholder { /* Firefox 18- */
+  color: #FFFFFF !important;
+  font-style: normal !important; 
+}
+
+.contact-image
+{
+    text-align: center;
+    padding: 3em 0;
+}
+
+.image-doctor
+{
+    text-align: center;
+}
+
+.signature-doctor img
+{
+    padding: 9em 6em;
+}
+
+ul#menu-menu-principal li a
+{
+    font-size: 1.5em;
+    font-family: 'Simplifica';
+    color: #323230;
+}
+
+ul.dropdown-menu li a:hover {
+    background-color: #FACDC3 !important;
+}
+
+div#masthead
+{
+    background-color: #FACDC3;
+}
+
+section.section.swatch-white.contact-image-color.section-text-no-shadow.section-inner-no-shadow.section-normal.section-opaque
+{
+    background-color: #c5cbcf !important;
+}
+
+footer#footer
+{
+    width: 100vw !important;
+    left: 0 !important;
+    position: absolute;
+    margin-top: 3em;
+}
+
+footer#footer section .container
+{
+    margin: 2em !important;
+    width: 96.5%;
+}
+
+footer#footer section .container .row.element-normal-top.element-normal-bottom
+{
+    margin: 0 !important;
+}
+
+.footer-2,
+.footer-2 .row
+{
+    text-align: center;
+}
+
+.footer-2 img 
+{
+    margin: 0 1em;
+}
+
+div.sugery-image + div.element-short-top.element-short-bottom
+{
+    margin-bottom: -12px !important;
+}
+
+@media only screen and (max-device-width: 480px){
+    video.section-background-video
+    {
+        src: "";
+    }
+    .element-no-top.element-no-bottom 
+    {
+        padding-left: 1em;
+        padding-right: 1em;
+    }
+} 
+}  
+</style>

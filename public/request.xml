@@ -1,35 +1,35 @@
 <Request>
-							<Cotizacion_Id>17993</Cotizacion_Id>
+							<Cotizacion_Id>18371</Cotizacion_Id>
 							<Vigencia>
-								<Inicial>20/04/2016</Inicial>
-								<Final>20/04/2017</Final>
+								<Inicial>27/04/2016</Inicial>
+								<Final>27/04/2017</Final>
 							</Vigencia>
-							<No_Expediente>17993</No_Expediente>
+							<No_Expediente>18371</No_Expediente>
 							<Contratante>
 								<Personalidad>1</Personalidad>
-								<RFC>DUMB820913D68</RFC>
+								<RFC>LEMJ931021LS2</RFC>
 								<Pol_Exp>0</Pol_Exp>
 								<Persona_Fisica>
-									<Primer_Nombre>Jeny</Primer_Nombre>
+									<Primer_Nombre>Jeniffer</Primer_Nombre>
 									<Segundo_Nombre>
 									</Segundo_Nombre>
-									<Apellido_Paterno>Jeny</Apellido_Paterno>
-									<Apellido_Materno>Jeny</Apellido_Materno>
+									<Apellido_Paterno>Ledezma</Apellido_Paterno>
+									<Apellido_Materno>Miramontes</Apellido_Materno>
 									<Genero>M</Genero>
 									<Edo_Civil>S</Edo_Civil>
 									<CURP></CURP>
-									<Ocupacion>Jeny</Ocupacion>
+									<Ocupacion>Mercadólogo</Ocupacion>
 								</Persona_Fisica>
 								<Datos_Origen>
-									<Fecha_Nacimiento>24/09/1997</Fecha_Nacimiento>
+									<Fecha_Nacimiento>21/10/1993</Fecha_Nacimiento>
 									<Pais_Nacimiento>1</Pais_Nacimiento>
 								</Datos_Origen>
 								<Datos_Domicilio>
-									<Calle>Jeny</Calle>
-									<No_Exterior>10</No_Exterior>
-									<No_Interior>10</No_Interior>
-									<Colonia>Jeny</Colonia>
-									<Cod_Postal>45134</Cod_Postal>
+									<Calle>Eca do queiros</Calle>
+									<No_Exterior>1031</No_Exterior>
+									<No_Interior>44</No_Interior>
+									<Colonia>Jardines Univer</Colonia>
+									<Cod_Postal>45110</Cod_Postal>
 									<Pais>1</Pais>
 									<Estado>14</Estado>
 									<Municipio>14120</Municipio>
@@ -38,46 +38,46 @@
 									<Tel_Particular>
 										<Cod_Pais>52</Cod_Pais>
 										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Numero>36274952</Numero>
 									</Tel_Particular>
 									<Tel_Trabajo>
 										<Cod_Pais>52</Cod_Pais>
 										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Numero>36274952</Numero>
 									</Tel_Trabajo>
 									<Tel_Movil>
 										<Cod_Pais>52</Cod_Pais>
-										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Cod_Area>044</Cod_Area>
+										<Numero>3313836572</Numero>
 									</Tel_Movil>
-									<Email>jeny@jeny.com</Email>
+									<Email>jeniffer_lede@hotmail.com</Email>
 								</Datos_Contacto>
 							</Contratante>
 							<Propietario>
 								<Personalidad>1</Personalidad>
-								<RFC>DUMB820913D68</RFC>
+								<RFC>LEMJ931021LS2</RFC>
 								<Pol_Exp>0</Pol_Exp>
 								<Persona_Fisica>
-									<Primer_Nombre>Jeny</Primer_Nombre>
+									<Primer_Nombre>Jeniffer</Primer_Nombre>
 									<Segundo_Nombre>
 									</Segundo_Nombre>
-									<Apellido_Paterno>Jeny</Apellido_Paterno>
-									<Apellido_Materno>Jeny</Apellido_Materno>
+									<Apellido_Paterno>Ledezma</Apellido_Paterno>
+									<Apellido_Materno>Miramontes</Apellido_Materno>
 									<Genero>M</Genero>
 									<Edo_Civil>S</Edo_Civil>
 									<CURP></CURP>
-									<Ocupacion>Jeny</Ocupacion>
+									<Ocupacion>Mercadólogo</Ocupacion>
 								</Persona_Fisica>
 								<Datos_Origen>
-									<Fecha_Nacimiento>24/09/1997</Fecha_Nacimiento>
+									<Fecha_Nacimiento>21/10/1993</Fecha_Nacimiento>
 									<Pais_Nacimiento>1</Pais_Nacimiento>
 								</Datos_Origen>
 								<Datos_Domicilio>
-									<Calle>Jeny</Calle>
-									<No_Exterior>10</No_Exterior>
-									<No_Interior>10</No_Interior>
-									<Colonia>Jeny</Colonia>
-									<Cod_Postal>45134</Cod_Postal>
+									<Calle>Eca do queiros</Calle>
+									<No_Exterior>1031</No_Exterior>
+									<No_Interior>44</No_Interior>
+									<Colonia>Jardines Univer</Colonia>
+									<Cod_Postal>45110</Cod_Postal>
 									<Pais>1</Pais>
 									<Estado>14</Estado>
 									<Municipio>14120</Municipio>
@@ -86,46 +86,46 @@
 									<Tel_Particular>
 										<Cod_Pais>52</Cod_Pais>
 										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Numero>36274952</Numero>
 									</Tel_Particular>
 									<Tel_Trabajo>
 										<Cod_Pais>52</Cod_Pais>
 										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Numero>36274952</Numero>
 									</Tel_Trabajo>
 									<Tel_Movil>
 										<Cod_Pais>52</Cod_Pais>
-										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Cod_Area>044</Cod_Area>
+										<Numero>3313836572</Numero>
 									</Tel_Movil>
-									<Email>jeny@jeny.com</Email>
+									<Email>jeniffer_lede@hotmail.com</Email>
 								</Datos_Contacto>
 							</Propietario>
 							<Conductor>
 								<Personalidad>1</Personalidad>
-								<RFC>DUMB820913D68</RFC>
+								<RFC>LEMJ931021LS2</RFC>
 								<Pol_Exp>0</Pol_Exp>
 								<Persona_Fisica>
-									<Primer_Nombre>Jeny</Primer_Nombre>
+									<Primer_Nombre>Jeniffer</Primer_Nombre>
 									<Segundo_Nombre>
 									</Segundo_Nombre>
-									<Apellido_Paterno>Jeny</Apellido_Paterno>
-									<Apellido_Materno>Jeny</Apellido_Materno>
+									<Apellido_Paterno>Ledezma</Apellido_Paterno>
+									<Apellido_Materno>Miramontes</Apellido_Materno>
 									<Genero>M</Genero>
 									<Edo_Civil>S</Edo_Civil>
 									<CURP></CURP>
-									<Ocupacion>Jeny</Ocupacion>
+									<Ocupacion>Mercadólogo</Ocupacion>
 								</Persona_Fisica>
 								<Datos_Origen>
-									<Fecha_Nacimiento>24/09/1997</Fecha_Nacimiento>
+									<Fecha_Nacimiento>21/10/1993</Fecha_Nacimiento>
 									<Pais_Nacimiento>1</Pais_Nacimiento>
 								</Datos_Origen>
 								<Datos_Domicilio>
-									<Calle>Jeny</Calle>
-									<No_Exterior>10</No_Exterior>
-									<No_Interior>10</No_Interior>
-									<Colonia>Jeny</Colonia>
-									<Cod_Postal>45134</Cod_Postal>
+									<Calle>Eca do queiros</Calle>
+									<No_Exterior>1031</No_Exterior>
+									<No_Interior>44</No_Interior>
+									<Colonia>Jardines Univer</Colonia>
+									<Cod_Postal>45110</Cod_Postal>
 									<Pais>1</Pais>
 									<Estado>14</Estado>
 									<Municipio>14120</Municipio>
@@ -134,29 +134,29 @@
 									<Tel_Particular>
 										<Cod_Pais>52</Cod_Pais>
 										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Numero>36274952</Numero>
 									</Tel_Particular>
 									<Tel_Trabajo>
 										<Cod_Pais>52</Cod_Pais>
 										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Numero>36274952</Numero>
 									</Tel_Trabajo>
 									<Tel_Movil>
 										<Cod_Pais>52</Cod_Pais>
-										<Cod_Area>33</Cod_Area>
-										<Numero>12345678</Numero>
+										<Cod_Area>044</Cod_Area>
+										<Numero>3313836572</Numero>
 									</Tel_Movil>
-									<Email>jeny@jeny.com</Email>
+									<Email>jeniffer_lede@hotmail.com</Email>
 								</Datos_Contacto>
 							</Conductor>
 							<Vehiculo>
 								<Tipo>1</Tipo>
-								<Modelo>2003</Modelo>
-								<ClaveInterna>9551</ClaveInterna>
-								<No_Serie>BALAM5NB1EM502125</No_Serie>
-								<No_Motor>123299288</No_Motor>
-								<Placas>SJT1123</Placas>
-								<REPUVE>guardarPoliza</REPUVE>
+								<Modelo>2006</Modelo>
+								<ClaveInterna>2070</ClaveInterna>
+								<No_Serie>SJNFCAK136A049855</No_Serie>
+								<No_Motor>CR14058337</No_Motor>
+								<Placas>JFM6269</Placas>
+								<REPUVE></REPUVE>
 								<Ubicacion>14</Ubicacion>
 							</Vehiculo>
 						</Request>

@@ -1,5 +1,7 @@
 <body>
-	<img src="{{ asset('images/mail/aseguro-mailing.png') }}">
+	<div style="text-align: center;">
+		<img src="{{ asset('images/mail/aseguro-mailing.png') }}">
+	</div>
 	<br>
-	Su póliza se encuentra en: <a href="{{ $url }}" target="_blank">{{ $url }}</a>
+	Si no puede visualizar su póliza, de click <a href="{{ $url }}" target="_blank">aquí</a>
 </body>

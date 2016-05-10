@@ -5,12 +5,18 @@ class UriController extends BaseController {
 	public function webHook()
 	{
 		$json = file_get_contents('php://input');
-		$json = substr($json, 7);
-		$json = substr($json, 0, -1);
 		$action = json_decode($json);
+
 
 		switch ($action->type)
 		{
+			case 'verification':
+				$codigo = $action->verification_code;
+				//mail("edgar@sitiorandom", "Codigo de verificación Openpay", $codigo);
+				file_put_contents('codigo.txt', $codigo);
+				header("HTTP/1.1 200 OK");
+				break;
+
 			case 'charge.succeeded':
 				$order = $action->transaction->order_id;
 				$emision = DB::table('emisiones')->where('order_id', $order)->first();
@@ -184,27 +190,28 @@ class UriController extends BaseController {
 							</Vehiculo>
 						</Request>';
 
-				dd(file_put_contents("myxmlfile.xml", $xml));
-				//dd(simplexml_load_string($xml));
-
 
 				$request = array ( 'Token' => $accesos , 'Request' => $xml);
 
 				$poliza = $WS->Emite($request);
 				$poliza = \simplexml_load_string($poliza->EmiteResult);
 
-				dd($poliza);
+				$toEmail = 'edgar@sitiorandom.com';
 
-				$toEmail = 'contacto@aseguro.mx';
-
-				$data = array('url' => $poliza->Poliza_URL ? : 'http://fgseguros.aprosistema.com/CotizadorAutos/Polizas/110208034500.pdf');
+				$data = array('url' => $poliza->Poliza_URL);
 
 				Mail::send('emails.poliza', $data , function($message) use ($toEmail, $poliza)
 				{
 					$message->from('no-reply@aseguro.mx', 'Emisión de poliza');
 					$message->to($toEmail, $name = null);
 					$message->subject('¡Gracias por confiar en Aseguro! - PÓLIZA DE SEGURO');
+					$message->attach($poliza->Poliza_URL, 
+						array(
+							'mime' => 'application/pdf'
+							));
 				});
+
+				header("HTTP/1.1 200 OK");
 
 				break;
 			

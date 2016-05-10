@@ -16,7 +16,8 @@ class QuoteController extends BaseController {
 			'estados' => $estados,
 			'tipo' => Input::get('tipo'),
 			'claveInterna' => Input::get('clave-interna'),
-			'modelo' => Input::get('modelo')
+			'modelo' => Input::get('modelo'),
+			'recibos' => Input::get('recibos')
 			));
 	}
 
@@ -71,6 +72,9 @@ class QuoteController extends BaseController {
 			'opcion' => Input::get('opcion'),
 			'id' => Input::get('id'),
 			'monto' => Input::get('monto'),
+			'plan' => Input::get('plan'),
+			'recibos' => Input::get('recibos'),
+			'formato' => Input::get('formato'),
 			'nombre' => $data['primer_nombre'],
 			'apellido' => $data['apellido_paterno'],
 			'telefono' => $data['particular_numero'],
@@ -136,6 +140,7 @@ class QuoteController extends BaseController {
 
 	public function cargoTarjeta()
 	{
+		
 
 		$openpay = Openpay::getInstance('m7bm553khn5nbyn5fg75', 'sk_80f1cd0745f24af8ae46929496601fa5'); // Variable de identificación.
 
@@ -157,39 +162,47 @@ class QuoteController extends BaseController {
 
 		try 
 		{
+			$formato = Input::get('formato');
+
+			switch ($formato)
+			{
+				case 'Mensual':
+					$plazo = 1;
+					break;
+
+				case 'Trimestral':
+					$plazo = 3;
+					break;
+				case 'Semestral':
+					$plazo = 6;
+					break;
+			}
+
 			$charge = $openpay->charges->create($chargeData);
 
 			if(Input::get('plan'))
 			{
-				$planDataRequest = array(
-					'amount' => Input::get('cargo'),
-					'status_after_retry' => 'cancelled',
-					'retry_times' => 2,
-					'name' => 'Cobro de pólza (aseguro.mx)',
-					'repeat_unit' => 'month',
-					'trial_days' => '30',
-					'repeat_every' => '1',
-					'currency' => 'MXN'
-					);
-
-				$plan = $openpay->plans->add($planDataRequest);
-
 				$customer = $openpay->customers->add($cliente);
 
-				$cardDataRequest = array(
-					'holder_name' => 'Mi cliente uno',
-					'card_number' => '4111111111111111',
-					'cvv2' => '123',
-					'expiration_month' => '12',
-					'expiration_year' => '15'
+				$cardData = array('token_id' => Input::get('token_id'));
+				$card = $customer->cards->add($cardData);
+
+				$data = array(
+					'id_cliente' => $customer,
+					'id_tarjeta' => $card,
+					'device_session_id' => Input::get('deviceIdHiddenFieldName'),
+					'monto' => Input::get('recibos'),
+					'proximo_pago' => date('Y-m-d', strtotime('+' . $plazo . ' month', strtotime(date('Y-m-d')))),
+					'pagos_restantes' => 12 - $plazo
 					);
 
+				DB::table('planes')->insert($data);
 			}
 
 		}
 		catch(Exception $e)
 		{
-			$mensaje = "Hubo un error con la tarjeta, revísala o intenta más tarde";
+			$mensaje = "Hubo un error con la tarjeta, no se pudo hacer el cargo. <br> Revísa tu tarjeta e intenta de nuevo, si el problema persiste contactanos. ";
 			
 			return Redirect::to('/')->with('message', $mensaje);
 		}

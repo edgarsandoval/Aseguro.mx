@@ -7,12 +7,10 @@ class UriController extends BaseController {
 		$json = file_get_contents('php://input');
 		$action = json_decode($json);
 
-
 		switch ($action->type)
 		{
 			case 'verification':
 				$codigo = $action->verification_code;
-				//mail("edgar@sitiorandom", "Codigo de verificación Openpay", $codigo);
 				file_put_contents('codigo.txt', $codigo);
 				header("HTTP/1.1 200 OK");
 				break;
@@ -196,7 +194,7 @@ class UriController extends BaseController {
 				$poliza = $WS->Emite($request);
 				$poliza = \simplexml_load_string($poliza->EmiteResult);
 
-				$toEmail = 'edgar@sitiorandom.com';
+				$toEmail = $emision->email;
 
 				$data = array('url' => $poliza->Poliza_URL);
 

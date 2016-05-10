@@ -16,6 +16,7 @@ function cargarDatos()
 	$('#pago').val(parseFloat($('div#' + idCotizacion + ' .col-md-3:last p').html().split('$')[1].split(',').join('')));
 	$('#cobertura').val($('div#' + idCotizacion + ' .col-md-6 p:first').html().trim().split(' ')[2]);
 	$('#formato').val($('input[type="radio"]:checked').parent().html().trim().split('>')[1].trim());
+	$('#recibos').val(parseFloat($('div#' + idCotizacion + ' p.costo-anual + p').html().split('$')[1].split('<')[0].split(',').join('')));
 
 	$('form').submit();
 }

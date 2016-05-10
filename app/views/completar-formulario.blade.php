@@ -35,7 +35,12 @@
 			<div class="col-md-8 form-content">
 				{{ Form::open(['action' => 'QuoteController@guardarPoliza', 'method' => 'POST']) }}
 				<input type="hidden" name="id" value="{{$cotizacion_id}}">
-				<input type="hidden" name="monto" value="{{$pago}}">				
+				<input type="hidden" name="monto" value="{{$pago}}">
+				<input type="hidden" name="recibos" value="{{$recibos}}">
+				@if($formato != 'Anual')
+					<input type="hidden" name="plan" value="1">
+					<input type="hidden" name="formato" value="{{$formato}}">
+				@endif				
 				<input id="no-pag" type="hidden" value="1">
 				<div id="form-page-1">
 					<div class="row">
@@ -228,7 +233,7 @@
 						<div class="col-md-4">
 							<div class="row">
 								<div class="col-md-4">
-									<input type="text" name="frm-codigo-tel" required>
+									<input type="text" name="frm-codigo-tel" placeholder="Lada" required>
 								</div>
 								<div class="col-md-8">
 									<input type="text" name="frm-telefono" placeholder="Teléfono" required>
@@ -238,7 +243,7 @@
 						<div class="col-md-4">
 							<div class="row">
 								<div class="col-md-4">
-									<input type="text" name="frm-codigo-cel" required>
+									<input type="text" name="frm-codigo-cel" placeholder="Lada" required>
 								</div>
 								<div class="col-md-8">
 									<input type="text" name="frm-celular" placeholder="Celular" required>
@@ -262,8 +267,6 @@
 							<input type="text" name="frm-placas" placeholder="Placas(Opcional)">
 							<input type="text" name="frm-repuve" placeholder="REPUVE(Opcional)">
 							<input type="text" name="frm-color" placeholder="Color(Opcional)">
-							<input type="text" id="ubicacion" disabled>
-							<input type="hidden" name="frm-ubicacion" palceholder="Ubicación">
 						</div>
 					</div>
 				</div>

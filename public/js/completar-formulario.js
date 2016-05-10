@@ -65,8 +65,6 @@ function setPayment(id)
 function loadMunicipios()
 {
     $("#municipios").empty().append("<option>-Cargando-</option>");
-    $('input[name="frm-ubicacion"]').val($("#estados").val());
-    $('#ubicacion').val($("#estados option:selected").html());
     $.ajax(
         {
             url: "municipios",

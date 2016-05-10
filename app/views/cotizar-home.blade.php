@@ -91,6 +91,7 @@
 		<input type="hidden" id="pago" name="pago" value="">
 		<input type="hidden" id="cobertura" name="cobertura" value="">
 		<input type="hidden" id="formato" name="formato" value="">
+		<input type="hidden" id="recibos" name="recibos" value="">
 		<input type="hidden" id="descripcion" name="descripcion" value="{{$descripcion}}">
 		<input type="hidden" id="tipo" name="tipo" value={{$datos['tipo']}}>
 		<input type="hidden" id="clave-interna" name="clave-interna" value={{$datos['clave-interna']}}>

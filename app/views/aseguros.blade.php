@@ -22,7 +22,7 @@
     		<div class="gallery__item">
       			<a href="http://www.segurosbanorte.com.mx/" target="_blank"><img src="{{ asset('images/aseguros/banorte.png') }}" class="gallery__img" alt="" /></a>
     		</div>
-        <div class="gallery__item">
+<!--         <div class="gallery__item">
           <a href="https://www.rsaseguros.com.mx/" target="_blank"><img src="{{ asset('images/aseguros/rsa.png') }}" class="gallery__img"></a>
         </div>
         <div class="gallery__item">
@@ -49,10 +49,10 @@
         <div class="gallery__item">
           <a href="http://www.elpotosi.com.mx/" target="_blank"><img src="{{ asset('images/aseguros/potosi.png') }}" class="gallery__img"></a>
         </div>        
-<!--         <div class="gallery__item">
+        <div class="gallery__item">
           <a href="http://www.multiva.com.mx/" target="_blank"><img src="{{ asset('images/aseguros/multiva.png') }}" class="gallery__img"></a>
-        </div> -->
-
+        </div>
+ -->
   		</div>
 	</div>
 	<div class="gallery__controls clearfix">

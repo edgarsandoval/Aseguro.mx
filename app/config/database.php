@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'aseguro_local',
-			'username'  => 'root',
-			'password'  => 'root',
+			'database'  => 'interior_aseguro',
+			'username'  => 'interior_aseguro',
+			'password'  => '1Qk61K}Qy6zT',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

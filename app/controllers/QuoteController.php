@@ -23,7 +23,6 @@ class QuoteController extends BaseController {
 
 	public function guardarPoliza()
 	{
-		//dd(Input::all());
 
 		$prefix = 'frm-';
 
@@ -84,7 +83,6 @@ class QuoteController extends BaseController {
 
 	public function procesarPago()
 	{
-		//dd(Input::all());
 		switch (intval(Input::get('opcion')))
 		{
 			case 1:
@@ -202,9 +200,20 @@ class QuoteController extends BaseController {
 		}
 		catch(Exception $e)
 		{
-			$mensaje = "Hubo un error con la tarjeta, no se pudo hacer el cargo. <br> Revísa tu tarjeta e intenta de nuevo, si el problema persiste contactanos. ";
+			$mensaje = "Hubo un error con la tarjeta, no se pudo hacer el cargo. <br> Revísa tu tarjeta e intenta de nuevo, si el problema persiste contáctanos. ";
 			
-			return Redirect::to('/')->with('message', $mensaje);
+			return Redirect::action('QuoteController@procesarPago', array(
+				'opcion' => Input::get('opcion'),
+				'id' => Input::get('id'),
+				'monto' => Input::get('monto'),
+				'plan' => Input::get('plan'),
+				'recibos' => Input::get('recibos'),
+				'formato' => Input::get('formato'),
+				'nombre' => Input::get('primer_nombre'),
+				'apellido' => Input::get('apellido_paterno'),
+				'telefono' => Input::get('particular_numero'),
+				'email' => Input::get('email'),
+				'error' => true));
 		}
 
 

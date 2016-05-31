@@ -1,4 +1,9 @@
 <div class="row gidole">
+    @if(isset($error))
+    <div class="alert alert-danger">
+        Hubo un error con la tarjeta, no se pudo hacer el cargo. <br> Revísa tu tarjeta e intenta de nuevo, si el problema persiste contáctanos. 
+    </div>
+    @endif
     <div class="bkng-tb-cntnt">
         <div class="pymnts">
             {{ Form::open(['action' => 'QuoteController@cargoTarjeta', 'method' => 'POST', 'id' => 'payment-form']) }}
@@ -29,7 +34,7 @@
                                     <div class="sctn-col half l"><input type="text" placeholder="Año" data-openpay-card="expiration_year"></div>
                                 </div>
                                 <div class="sctn-col cvv"><label>Código de seguridad</label>
-                                    <div class="sctn-col half l"><input type="text" placeholder="3 dígitos" autocomplete="off" data-openpay-card="cvv2"></div>
+                                    <div class="sctn-col half l"><input type="text" placeholder="3-4 dígitos" autocomplete="off" data-openpay-card="cvv2"></div>
                                 </div>
                             </div>
                             <div class="openpay"><div class="logo">Transacciones realizadas vía:</div>

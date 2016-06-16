@@ -1,5 +1,5 @@
 RewriteEngine on
-RewriteCond %{HTTP_HOST} ^(www.)?aseguro.mx$ [NC]
+#RewriteCond %{HTTP_HOST} ^(www.)?aseguro.mx$ [NC]
 
 RewriteCond %{REQUEST_URI} !^/public/
 

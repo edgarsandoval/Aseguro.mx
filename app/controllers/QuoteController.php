@@ -249,41 +249,54 @@ class QuoteController extends BaseController {
 
 	public function cargoPaypal()
 	{
-		$url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-		$fields = array(
-			'cmd' => "_xclick",
-			'business' => 'edgar@sitiorandom.com',
-			'item_name' => 'Póliza aseguro.mx',
-			'currency_code' => 'MXN',
-			);
-		$fields_string = '';
+		$order = array('amount' => Input::get('monto'), 'description' => 'Pago póliza seguro');
 
-		foreach($fields as $key=>$value)
-		{
-			$fields_string .= $key.'='.$value.'&';
-		}
-		rtrim($fields_string, '&');
-
-
-		$ch = curl_init();
-
-		//set the url, number of POST vars, POST data
-		curl_setopt($ch,CURLOPT_URL, $url);
-		curl_setopt($ch,CURLOPT_POST, count($fields));
-		curl_setopt($ch,CURLOPT_POSTFIELDS, $fields_string);
-
-		//execute post
-		$result = curl_exec($ch);
-
-		//close connection
-		curl_close($ch);
+		$baseUrl = $this->getBaseUrl() . '/order_completion.php?orderId=$orderId';
+		$payment = $this->makePaymentUsingPayPal($order['amount'], 'USD', $order['description'], "$baseUrl&success=true", "$baseUrl&success=false");
 	}
 
-	
-
-	public function tratarError($dump)
+	public function makePaymentUsingPayPal($total, $currency, $paymentDesc, $returnUrl, $cancelUrl)
 	{
-		dd($dump);
+		$payer = new Payer();
+		$payer->setPaymentMethod("paypal");
+		
+		// Specify the payment amount.
+		$amount = new Amount();
+		$amount->setCurrency($currency);
+		$amount->setTotal($total);
+		
+		// ###Transaction
+		// A transaction defines the contract of a
+		// payment - what is the payment for and who
+		// is fulfilling it. Transaction is created with
+		// a 'Payee' and 'Amount' types
+		$transaction = new Transaction();
+		$transaction->setAmount($amount);
+		$transaction->setDescription($paymentDesc);
+		
+		$redirectUrls = new RedirectUrls();
+		$redirectUrls->setReturnUrl($returnUrl);
+		$redirectUrls->setCancelUrl($cancelUrl);
+		
+		$payment = new Payment();
+		$payment->setRedirectUrls($redirectUrls);
+		$payment->setIntent("sale");
+		$payment->setPayer($payer);
+		$payment->setTransactions(array($transaction));
+		
+		$payment->create(getApiContext());
+		return $payment;
 	}
 
+	public function getBaseUrl()
+	{
+		$protocol = 'http';
+		if ($_SERVER['SERVER_PORT'] == 443 || (!empty($_SERVER['HTTPS']) && strtolower($_SERVER['HTTPS']) == 'on')) {
+			$protocol .= 's';
+		}
+
+		$host = $_SERVER['HTTP_HOST'];
+		$request = $_SERVER['PHP_SELF'];
+		return dirname($protocol . '://' . $host . $request);
+	}
 }

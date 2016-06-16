@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"artisaninweb/laravel-soap": "0.2.*",
-		"openpay/sdk": "^1.0"
+		"openpay/sdk": "^1.0",
+		"paypal/rest-api-sdk-php": "*"
 	},
 	"autoload": {
 		"classmap": [
